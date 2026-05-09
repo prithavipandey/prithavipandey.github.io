@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { SiteNav } from "@/components/site-nav";
-import { getProject, projects } from "@/data/projects";
+import { getProject, projects, type Project } from "@/data/projects";
 
 export const Route = createFileRoute("/work/$slug")({
   head: ({ params }) => {
@@ -60,7 +60,7 @@ function Block({ label, children }: { label: string; children: React.ReactNode }
 }
 
 function CaseStudy() {
-  const p = Route.useLoaderData();
+  const p = Route.useLoaderData() as Project;
   const idx = projects.findIndex((x) => x.slug === p.slug);
   const next = projects[(idx + 1) % projects.length];
 
