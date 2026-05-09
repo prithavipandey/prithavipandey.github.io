@@ -47,10 +47,12 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const fadeUp = {
+import type { Variants } from "framer-motion";
+
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
-} as const;
+  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+};
 
 function Section({
   id,
@@ -118,7 +120,7 @@ function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-xs text-muted-foreground"
         >
           <span className="relative flex h-2 w-2">
@@ -131,7 +133,7 @@ function Hero() {
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.9, delay: 0.05, ease: "easeOut" }}
           className="mt-6 text-5xl md:text-7xl lg:text-[5.5rem] font-semibold tracking-[-0.03em] leading-[1.02] text-gradient max-w-5xl"
         >
           Building scalable commerce & platform products.
