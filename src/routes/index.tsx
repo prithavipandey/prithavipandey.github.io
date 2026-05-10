@@ -567,11 +567,6 @@ function Timeline() {
             }`} />
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
               <h3 className="text-lg font-semibold">{it.c}</h3>
-              {it.highlight && (
-                <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-gradient-accent/20 text-electric border border-electric/30">
-                  IIT Roorkee Alumni
-                </span>
-              )}
             </div>
             <div className="text-sm text-foreground/80 mt-0.5">{it.r}</div>
             <div className="text-xs text-muted-foreground mt-1 tabular-nums">{it.d}</div>
@@ -646,12 +641,6 @@ function Contact() {
             className="inline-flex items-center gap-2 px-5 py-3 rounded-full glass hover:bg-card transition"
           >
             <Mail className="w-4 h-4" /> Email
-          </a>
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-full glass hover:bg-card transition"
-          >
-            <Download className="w-4 h-4" /> Resume
           </a>
         </div>
         <div className="mt-20 text-xs text-muted-foreground">
