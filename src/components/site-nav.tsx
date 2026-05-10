@@ -5,7 +5,6 @@ const links = [
   { to: "/", label: "Home" },
   { hash: "#work", label: "Work" },
   { hash: "#about", label: "About" },
-  { hash: "#thinking", label: "Thinking" },
   { hash: "#contact", label: "Contact" },
 ];
 
