@@ -20,13 +20,22 @@ import {
   Award,
   Mail,
   Linkedin,
-  Download,
   GraduationCap,
   Briefcase,
   Trophy,
   Medal,
   BadgeCheck,
   Star,
+  Database,
+  Sparkle,
+  MessageSquare,
+  CreditCard,
+  Truck,
+  Plane,
+  Hotel,
+  Gift,
+  RotateCcw,
+  Wand2,
 } from "lucide-react";
 import { SiteNav } from "@/components/site-nav";
 import { projects } from "@/data/projects";
@@ -108,7 +117,7 @@ function Hero() {
   const cards = [
     { v: "9+", l: "Years experience" },
     { v: "5+", l: "Years in product" },
-    { v: "$25M+", l: "Annual business impact" },
+    { v: "$20M+", l: "Annual business impact" },
     { v: "0→1", l: "Product building" },
     { v: "Global", l: "Commerce systems" },
     { v: "Platform", l: "Growth & marketplace" },
@@ -140,7 +149,7 @@ function Hero() {
           transition={{ duration: 0.9, delay: 0.05, ease: "easeOut" }}
           className="mt-6 text-5xl md:text-7xl lg:text-[5.5rem] font-semibold tracking-[-0.03em] leading-[1.02] text-gradient max-w-5xl"
         >
-          Hi, I'm Prithavi — I build products that scale
+          Hi, I'm Prithavi — Product leader & builder
         </motion.h1>
 
         <motion.p
