@@ -23,6 +23,10 @@ import {
   Download,
   GraduationCap,
   Briefcase,
+  Trophy,
+  Medal,
+  BadgeCheck,
+  Star,
 } from "lucide-react";
 import { SiteNav } from "@/components/site-nav";
 import { projects } from "@/data/projects";
@@ -68,14 +72,14 @@ function Section({
   className?: string;
 }) {
   return (
-    <section id={id} className={`relative mx-auto max-w-6xl px-4 py-28 md:py-36 ${className}`}>
+    <section id={id} className={`relative mx-auto max-w-6xl px-4 py-16 md:py-24 ${className}`}>
       {(eyebrow || title) && (
         <motion.div
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
           variants={fadeUp}
-          className="mb-14 max-w-3xl"
+          className="mb-10 md:mb-12 max-w-3xl"
         >
           {eyebrow && (
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium tracking-wider uppercase text-muted-foreground glass">
@@ -104,14 +108,14 @@ function Hero() {
   const cards = [
     { v: "9+", l: "Years experience" },
     { v: "5+", l: "Years in product" },
-    { v: "$20M+", l: "Annual business impact" },
+    { v: "$25M+", l: "Annual business impact" },
     { v: "0→1", l: "Product building" },
     { v: "Global", l: "Commerce systems" },
     { v: "Platform", l: "Growth & marketplace" },
   ];
 
   return (
-    <div ref={ref} className="relative overflow-hidden pt-40 pb-28 md:pt-52 md:pb-36">
+    <div ref={ref} className="relative overflow-hidden pt-36 pb-16 md:pt-48 md:pb-24">
       <motion.div style={{ y, opacity }} className="absolute inset-0 -z-10 bg-hero-radial" />
       <div className="absolute inset-0 -z-10 grid-bg [mask-image:radial-gradient(ellipse_60%_50%_at_50%_30%,black,transparent_75%)]" />
       <div className="absolute -z-10 left-1/2 -translate-x-1/2 top-24 w-[60rem] h-[60rem] rounded-full bg-gradient-accent opacity-[0.07] blur-3xl" />
@@ -136,7 +140,7 @@ function Hero() {
           transition={{ duration: 0.9, delay: 0.05, ease: "easeOut" }}
           className="mt-6 text-5xl md:text-7xl lg:text-[5.5rem] font-semibold tracking-[-0.03em] leading-[1.02] text-gradient max-w-5xl"
         >
-          Building scalable commerce & platform products.
+          Hi, I'm Prithavi — I build products that scale
         </motion.h1>
 
         <motion.p
@@ -145,8 +149,8 @@ function Hero() {
           transition={{ duration: 0.9, delay: 0.15 }}
           className="mt-7 max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed"
         >
-          Senior Product Manager with ~9 years across Product, Data Science, and Engineering. I build platform products,
-          commerce systems, marketplace experiences, and customer growth initiatives that drive measurable business outcomes.
+          Senior Product Manager with ~9 years across product, data science, and engineering — building scalable
+          commerce, platform, and customer experiences that drive measurable business impact.
         </motion.p>
 
         <motion.div
@@ -174,18 +178,21 @@ function Hero() {
           initial="hidden"
           animate="show"
           variants={{ show: { transition: { staggerChildren: 0.06, delayChildren: 0.4 } } }}
-          className="mt-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3"
+          className="mt-14 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3"
         >
           {cards.map((c) => (
             <motion.div
               key={c.l}
               variants={fadeUp}
-              className="glass rounded-2xl p-4 hover:border-foreground/20 transition group"
+              className="relative rounded-2xl p-5 bg-card/70 border border-foreground/10 hover:border-electric/40 hover:-translate-y-0.5 hover:bg-card transition-all duration-300 shadow-card group overflow-hidden"
             >
-              <div className="text-2xl font-semibold tracking-tight text-foreground group-hover:text-gradient transition">
+              <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-electric/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="text-3xl md:text-[2rem] font-semibold tracking-[-0.02em] text-foreground leading-none">
                 {c.v}
               </div>
-              <div className="mt-1 text-xs text-muted-foreground">{c.l}</div>
+              <div className="mt-2 text-[11px] uppercase tracking-wider text-muted-foreground font-medium">
+                {c.l}
+              </div>
             </motion.div>
           ))}
         </motion.div>
@@ -216,7 +223,7 @@ function About() {
     { i: Users, t: "Cross-functional Leadership" },
   ];
   return (
-    <Section id="about" eyebrow="About" title={<>From data science<br className="hidden md:block" /> to product leadership.</>}>
+    <Section id="about" eyebrow="About" title={<>From Data Science<br className="hidden md:block" /> to Product Leadership</>}>
       <div className="grid lg:grid-cols-5 gap-12">
         <div className="lg:col-span-3 space-y-5 text-lg text-muted-foreground leading-relaxed">
           <p>
@@ -257,7 +264,7 @@ function Process() {
     { i: Rocket, t: "Scale", d: "Turn successful initiatives into scalable systems, automation, and long-term product leverage." },
   ];
   return (
-    <Section eyebrow="Process" title="How I build products.">
+    <Section eyebrow="Process" title="How I Build Products">
       <div className="grid md:grid-cols-5 gap-3 relative">
         <div className="hidden md:block absolute top-12 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
         {steps.map((s, idx) => (
@@ -373,7 +380,7 @@ function LoyaltyVisual() {
 
 function Work() {
   return (
-    <Section id="work" eyebrow="Featured work" title="Selected product work.">
+    <Section id="work" eyebrow="Featured Work" title="Featured Work">
       <div className="grid md:grid-cols-2 gap-6">
         {projects.map((p, i) => (
           <motion.div
@@ -428,27 +435,6 @@ function Work() {
   );
 }
 
-function Thinking() {
-  const items = [
-    { t: "Build for scale", d: "I focus on products and systems that create long-term leverage." },
-    { t: "Customer + business value", d: "Strong products solve customer problems while creating measurable business impact." },
-    { t: "Data-informed decisions", d: "Data informs prioritization, but judgment drives product choices." },
-    { t: "Technology as an enabler", d: "Technology should simplify complexity and unlock better customer experiences." },
-  ];
-  return (
-    <Section eyebrow="Product thinking" title="How I think about products.">
-      <div className="grid sm:grid-cols-2 gap-4">
-        {items.map((it) => (
-          <div key={it.t} className="glass rounded-2xl p-7 hover:border-electric/30 transition">
-            <div className="text-lg font-semibold">{it.t}</div>
-            <p className="mt-3 text-muted-foreground leading-relaxed">{it.d}</p>
-          </div>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
 function Timeline() {
   const items = [
     { c: "Victoria's Secret", r: "Senior Product Manager", d: "Apr 2025 — Present", icon: Briefcase, highlight: false },
@@ -459,7 +445,7 @@ function Timeline() {
     { c: "IIT Roorkee", r: "B.Tech, Metallurgical & Materials Engineering", d: "2013 — 2017", icon: GraduationCap, highlight: true },
   ];
   return (
-    <Section eyebrow="Timeline" title="Career path.">
+    <Section eyebrow="Timeline" title="Career Path">
       <ol className="relative border-l border-border/70 ml-2">
         {items.map((it, i) => (
           <motion.li
@@ -492,45 +478,30 @@ function Timeline() {
 
 function Recognition() {
   const items = [
-    "Employee of the Quarter — Victoria's Secret",
-    "Employee of the Month — MakeMyTrip",
-    "Employee of the Quarter — MakeMyTrip",
-    "National Runner-up — EXL Analytics Competition",
-    "Oracle Certified Associate",
+    { t: "Employee of the Quarter", o: "Victoria's Secret", y: "2024", i: Trophy },
+    { t: "Employee of the Month", o: "MakeMyTrip", y: "2022", i: Medal },
+    { t: "Employee of the Quarter", o: "MakeMyTrip", y: "2022", i: Trophy },
+    { t: "National Runner-up", o: "EXL Analytics Competition", y: "2016", i: Star },
+    { t: "Oracle Certified Associate", o: "Oracle", y: "2018", i: BadgeCheck },
   ];
   return (
-    <Section eyebrow="Recognition" title="Selected recognition.">
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-        {items.map((t) => (
-          <div key={t} className="glass rounded-2xl p-5 flex items-start gap-3 hover:border-electric/40 transition">
-            <Award className="w-5 h-5 text-electric mt-0.5 shrink-0" />
-            <div className="text-sm font-medium leading-snug">{t}</div>
-          </div>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
-function Articles() {
-  const items = [
-    { t: "Future of conversational commerce", d: "How natural-language interfaces are reshaping product discovery and the catalog contract behind them." },
-    { t: "Building scalable platform products", d: "Designing platforms that compound — internal contracts, governance, and the velocity dividend." },
-    { t: "Growth systems in consumer products", d: "Why growth is a system, not a feature, and how to build the loops that survive the team scaling." },
-    { t: "Product thinking for complex ecosystems", d: "Operating across multi-system commerce: catalog, checkout, fulfillment, and the seams between them." },
-  ];
-  return (
-    <Section id="thinking" eyebrow="Writing" title="Thoughts on product, commerce & technology.">
-      <div className="grid md:grid-cols-2 gap-4">
-        {items.map((a) => (
-          <article key={a.t} className="group glass rounded-2xl p-6 hover:border-electric/40 transition cursor-pointer">
-            <div className="text-xs text-muted-foreground uppercase tracking-wider">Essay · Coming soon</div>
-            <h3 className="mt-3 text-xl font-semibold tracking-tight group-hover:text-gradient transition">{a.t}</h3>
-            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{a.d}</p>
-            <div className="mt-5 inline-flex items-center gap-1.5 text-sm text-electric">
-              Read <ArrowRight className="w-3.5 h-3.5" />
+    <Section eyebrow="Recognition" title="Recognition">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {items.map(({ t, o, y, i: Icon }) => (
+          <div
+            key={`${t}-${o}-${y}`}
+            className="group relative rounded-2xl p-6 bg-card/70 border border-foreground/10 hover:border-electric/40 hover:-translate-y-0.5 transition-all duration-300 shadow-card overflow-hidden"
+          >
+            <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-electric/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="flex items-start justify-between gap-3">
+              <div className="grid place-items-center w-10 h-10 rounded-xl bg-gradient-accent/15 border border-electric/20">
+                <Icon className="w-5 h-5 text-electric" />
+              </div>
+              <span className="text-[11px] tabular-nums uppercase tracking-wider text-muted-foreground">{y}</span>
             </div>
-          </article>
+            <div className="mt-5 text-base font-semibold leading-snug">{t}</div>
+            <div className="mt-1 text-sm text-muted-foreground">{o}</div>
+          </div>
         ))}
       </div>
     </Section>
@@ -550,7 +521,7 @@ function Contact() {
           transition={{ duration: 0.8 }}
           className="text-4xl md:text-6xl font-semibold tracking-tight text-gradient"
         >
-          Let's build great products.
+          Let's Build Great Products
         </motion.h2>
         <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
           Always open to conversations around product strategy, platform systems, commerce, growth, and meaningful opportunities.
@@ -565,7 +536,7 @@ function Contact() {
             <Linkedin className="w-4 h-4" /> LinkedIn
           </a>
           <a
-            href="mailto:hello@prithavipandey.com"
+            href="mailto:prithvi20261@outlook.com"
             className="inline-flex items-center gap-2 px-5 py-3 rounded-full glass hover:bg-card transition"
           >
             <Mail className="w-4 h-4" /> Email
@@ -594,10 +565,8 @@ function Index() {
         <About />
         <Process />
         <Work />
-        <Thinking />
         <Timeline />
         <Recognition />
-        <Articles />
         <Contact />
       </main>
     </div>
