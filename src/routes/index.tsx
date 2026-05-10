@@ -20,13 +20,22 @@ import {
   Award,
   Mail,
   Linkedin,
-  Download,
   GraduationCap,
   Briefcase,
   Trophy,
   Medal,
   BadgeCheck,
   Star,
+  Database,
+  Sparkle,
+  MessageSquare,
+  CreditCard,
+  Truck,
+  Plane,
+  Hotel,
+  Gift,
+  RotateCcw,
+  Wand2,
 } from "lucide-react";
 import { SiteNav } from "@/components/site-nav";
 import { projects } from "@/data/projects";
@@ -108,7 +117,7 @@ function Hero() {
   const cards = [
     { v: "9+", l: "Years experience" },
     { v: "5+", l: "Years in product" },
-    { v: "$25M+", l: "Annual business impact" },
+    { v: "$20M+", l: "Annual business impact" },
     { v: "0→1", l: "Product building" },
     { v: "Global", l: "Commerce systems" },
     { v: "Platform", l: "Growth & marketplace" },
@@ -140,7 +149,7 @@ function Hero() {
           transition={{ duration: 0.9, delay: 0.05, ease: "easeOut" }}
           className="mt-6 text-5xl md:text-7xl lg:text-[5.5rem] font-semibold tracking-[-0.03em] leading-[1.02] text-gradient max-w-5xl"
         >
-          Hi, I'm Prithavi — I build products that scale
+          Hi, I'm Prithavi — Product leader & builder
         </motion.h1>
 
         <motion.p
@@ -291,89 +300,178 @@ function Process() {
   );
 }
 
-const accentMap: Record<string, string> = {
-  blue: "from-[oklch(0.55_0.18_255)] to-[oklch(0.40_0.15_270)]",
-  violet: "from-[oklch(0.55_0.20_295)] to-[oklch(0.38_0.16_310)]",
-  cyan: "from-[oklch(0.65_0.13_220)] to-[oklch(0.40_0.14_250)]",
-  amber: "from-[oklch(0.70_0.14_60)] to-[oklch(0.45_0.16_30)]",
+const accentMap: Record<string, { grad: string; tint: string }> = {
+  blue: {
+    grad: "from-[oklch(0.32_0.10_255)] via-[oklch(0.22_0.08_260)] to-[oklch(0.16_0.05_265)]",
+    tint: "oklch(0.70_0.16_250)",
+  },
+  violet: {
+    grad: "from-[oklch(0.30_0.12_300)] via-[oklch(0.20_0.10_310)] to-[oklch(0.15_0.06_315)]",
+    tint: "oklch(0.72_0.18_300)",
+  },
+  cyan: {
+    grad: "from-[oklch(0.32_0.08_220)] via-[oklch(0.22_0.07_225)] to-[oklch(0.15_0.04_230)]",
+    tint: "oklch(0.78_0.12_215)",
+  },
+  amber: {
+    grad: "from-[oklch(0.32_0.08_60)] via-[oklch(0.22_0.07_45)] to-[oklch(0.15_0.05_35)]",
+    tint: "oklch(0.80_0.14_70)",
+  },
 };
 
-function ProjectVisual({ slug, accent }: { slug: string; accent: string }) {
-  const grad = accentMap[accent];
+function CompanyMark({ company }: { company: string }) {
+  const initials =
+    company === "Victoria's Secret" ? "VS" : company === "MakeMyTrip" ? "MMT" : company.slice(0, 2);
   return (
-    <div className={`relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-gradient-to-br ${grad}`}>
-      <div className="absolute inset-0 grid-bg opacity-30" />
-      <div className="absolute inset-0 noise" />
-      <div className="absolute inset-0 grid place-items-center p-8">
-        {slug === "ai-pim-platform" && <PimVisual />}
-        {slug === "emerging-commerce-tiktok-llm" && <TikTokVisual />}
-        {slug === "global-commerce-eu" && <GlobalVisual />}
-        {slug === "loyalty-revamp" && <LoyaltyVisual />}
+    <span className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-foreground/[0.04] border border-foreground/10">
+      <span className="grid place-items-center w-5 h-5 rounded-full bg-gradient-accent text-[9px] font-semibold tracking-tight text-background">
+        {initials}
+      </span>
+      <span className="text-[11px] font-medium text-foreground/85 tracking-tight">{company}</span>
+    </span>
+  );
+}
+
+function VNode({
+  icon: Icon,
+  label,
+  sub,
+  emphasis,
+  tint,
+}: {
+  icon: React.ElementType;
+  label: string;
+  sub?: string;
+  emphasis?: boolean;
+  tint?: string;
+}) {
+  return (
+    <div
+      className={`flex items-center gap-2 px-2 py-1.5 rounded-lg border backdrop-blur ${
+        emphasis ? "bg-white/[0.10] border-white/25" : "bg-white/[0.04] border-white/12"
+      }`}
+    >
+      <span
+        className="grid place-items-center w-5 h-5 rounded-md border border-white/15 shrink-0"
+        style={{ background: emphasis && tint ? tint : "rgba(255,255,255,0.06)" }}
+      >
+        <Icon className="w-2.5 h-2.5 text-white" />
+      </span>
+      <div className="leading-tight min-w-0">
+        <div className="text-[10px] font-medium text-white/95 tracking-tight truncate">{label}</div>
+        {sub && <div className="text-[8px] text-white/55 uppercase tracking-wider">{sub}</div>}
       </div>
-      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/40 to-transparent" />
     </div>
   );
 }
 
-function PimVisual() {
-  const nodes = ["Vendor", "ERP", "Feeds", "PIM Core", "LLM Enrich", "Search", "Marketing", "Site"];
+function PimVisual({ tint }: { tint: string }) {
   return (
-    <div className="relative w-full max-w-md grid grid-cols-3 gap-2 text-[10px] uppercase tracking-wider">
-      {nodes.map((n, i) => (
-        <div
-          key={n}
-          className={`px-2 py-3 rounded-md border border-white/20 bg-white/5 backdrop-blur text-white/90 text-center ${
-            i === 3 ? "col-span-3 bg-white/15 font-semibold py-4" : ""
-          }`}
-        >
-          {n}
+    <div className="w-full self-center grid grid-cols-[1fr_auto_1.15fr_auto_1fr] items-center gap-1.5">
+      <div className="space-y-1.5">
+        <VNode icon={Database} label="Vendor Feeds" sub="upstream" />
+        <VNode icon={Layers} label="Legacy ERP" sub="upstream" />
+        <VNode icon={BarChart3} label="Spreadsheets" sub="upstream" />
+      </div>
+      <span className="text-white/40 text-xs">→</span>
+      <div className="rounded-xl border border-white/20 bg-white/[0.08] p-2 space-y-1.5 backdrop-blur">
+        <div className="text-[8px] uppercase tracking-wider text-white/60 px-0.5">PIM Core</div>
+        <VNode icon={Layers} label="Schema" emphasis tint={tint} />
+        <VNode icon={Wand2} label="LLM Enrich" emphasis tint={tint} />
+        <VNode icon={Users} label="Salesforce" emphasis tint={tint} />
+      </div>
+      <span className="text-white/40 text-xs">→</span>
+      <div className="space-y-1.5">
+        <VNode icon={Sparkle} label="Site Search" sub="downstream" />
+        <VNode icon={ShoppingBag} label="Merchandising" sub="downstream" />
+        <VNode icon={TrendingUp} label="Marketing" sub="downstream" />
+      </div>
+    </div>
+  );
+}
+
+function TikTokVisual({ tint }: { tint: string }) {
+  return (
+    <div className="w-full self-center grid grid-cols-2 gap-2.5">
+      <div className="rounded-xl border border-white/15 bg-white/[0.05] p-2.5 space-y-1.5 backdrop-blur">
+        <div className="flex items-center justify-between">
+          <div className="text-[9px] uppercase tracking-wider text-white/60">TikTok Shop</div>
+          <span className="text-[8px] px-1.5 py-0.5 rounded-full bg-white/10 text-white/80">Live</span>
         </div>
-      ))}
-    </div>
-  );
-}
-function TikTokVisual() {
-  return (
-    <div className="grid grid-cols-2 gap-3 w-full max-w-md text-[11px] text-white/90">
-      <div className="rounded-xl border border-white/20 bg-white/5 p-3 space-y-1.5">
-        <div className="text-white/60 text-[9px] uppercase tracking-wider">TikTok Shop</div>
-        <div>Discovery</div><div>Browse</div><div>Click</div><div>Purchase</div>
+        <VNode icon={Sparkle} label="Curated Discovery" />
+        <VNode icon={ShoppingBag} label="Native Checkout" emphasis tint={tint} />
+        <VNode icon={TrendingUp} label="Acquisition" />
       </div>
-      <div className="rounded-xl border border-white/20 bg-white/5 p-3 space-y-1.5">
-        <div className="text-white/60 text-[9px] uppercase tracking-wider">Conversational</div>
-        <div className="text-white/80">"travel-friendly bras under $50"</div>
-        <div>→ Discovery</div><div>→ Recs</div><div>→ Compare</div>
-      </div>
-    </div>
-  );
-}
-function GlobalVisual() {
-  const f = ["Region", "Localized Checkout", "EU DC", "Vendors", "Delivery"];
-  return (
-    <div className="flex flex-wrap gap-2 justify-center max-w-md text-[10px] uppercase tracking-wider text-white/90">
-      {f.map((s, i) => (
-        <div key={s} className="flex items-center gap-2">
-          <div className="px-2.5 py-2 rounded-md border border-white/20 bg-white/5">{s}</div>
-          {i < f.length - 1 && <span className="text-white/50">→</span>}
+      <div className="rounded-xl border border-white/15 bg-white/[0.05] p-2.5 space-y-1.5 backdrop-blur">
+        <div className="flex items-center justify-between">
+          <div className="text-[9px] uppercase tracking-wider text-white/60">Conversational</div>
+          <span className="text-[8px] px-1.5 py-0.5 rounded-full bg-white/10 text-white/80">LLM</span>
         </div>
-      ))}
+        <div className="rounded-md border border-white/15 bg-white/[0.06] px-2 py-1.5 text-[10px] text-white/85 italic leading-snug">
+          "travel-friendly bras under $50"
+        </div>
+        <VNode icon={MessageSquare} label="Intent → Attrs" emphasis tint={tint} />
+        <VNode icon={Layers} label="Grounded Recs" />
+      </div>
     </div>
   );
 }
-function LoyaltyVisual() {
-  const j = ["Browse", "Book", "Reward", "Re-engage"];
+
+function GlobalVisual({ tint }: { tint: string }) {
   return (
-    <div className="w-full max-w-md text-[10px] uppercase tracking-wider text-white/90 space-y-3">
-      <div className="flex justify-between">
-        {j.map((s) => (
-          <div key={s} className="px-2.5 py-2 rounded-md border border-white/20 bg-white/5">{s}</div>
-        ))}
+    <div className="w-full self-center space-y-2">
+      <div className="grid grid-cols-3 gap-1.5">
+        <VNode icon={Globe2} label="Region" />
+        <VNode icon={CreditCard} label="Localized Pay" emphasis tint={tint} />
+        <VNode icon={BarChart3} label="Currency / Tax" />
       </div>
-      <div className="grid grid-cols-4 gap-1.5 text-center text-white/80">
-        {["Cashback", "Flights", "Hotels", "Cabs"].map((b) => (
-          <div key={b} className="py-2 rounded-md border border-white/15 bg-white/5">{b}</div>
-        ))}
+      <div className="flex justify-center text-white/40 text-xs">↓</div>
+      <div className="grid grid-cols-3 gap-1.5">
+        <VNode icon={Truck} label="EU DC Routing" emphasis tint={tint} />
+        <VNode icon={Layers} label="Vendor APIs" />
+        <VNode icon={Rocket} label="Faster Delivery" />
       </div>
+    </div>
+  );
+}
+
+function LoyaltyVisual({ tint }: { tint: string }) {
+  return (
+    <div className="w-full self-center space-y-2">
+      <div className="rounded-xl border border-white/15 bg-white/[0.05] p-2.5 backdrop-blur">
+        <div className="text-[9px] uppercase tracking-wider text-white/60 mb-1.5">Rewards Ecosystem</div>
+        <div className="grid grid-cols-4 gap-1.5">
+          <VNode icon={Gift} label="Cashback" />
+          <VNode icon={Plane} label="Flights" />
+          <VNode icon={Hotel} label="Hotels" />
+          <VNode icon={Compass} label="Cabs" />
+        </div>
+      </div>
+      <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-1.5">
+        <VNode icon={Users} label="Book" emphasis tint={tint} />
+        <span className="text-white/40 text-xs text-center">→</span>
+        <VNode icon={Gift} label="Reward" emphasis tint={tint} />
+        <span className="text-white/40 text-xs text-center">→</span>
+        <VNode icon={RotateCcw} label="Retain" emphasis tint={tint} />
+      </div>
+    </div>
+  );
+}
+
+function ProjectVisual({ slug, accent }: { slug: string; accent: string }) {
+  const a = accentMap[accent];
+  return (
+    <div className={`relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-gradient-to-br ${a.grad} border border-foreground/10`}>
+      <div className="absolute inset-0 grid-bg opacity-[0.18]" />
+      <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full blur-3xl opacity-30" style={{ background: a.tint }} />
+      <div className="absolute inset-0 noise opacity-60" />
+      <div className="absolute inset-0 p-5 md:p-6 flex">
+        {slug === "ai-pim-platform" && <PimVisual tint={a.tint} />}
+        {slug === "emerging-commerce-tiktok-llm" && <TikTokVisual tint={a.tint} />}
+        {slug === "global-commerce-eu" && <GlobalVisual tint={a.tint} />}
+        {slug === "loyalty-revamp" && <LoyaltyVisual tint={a.tint} />}
+      </div>
+      <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
     </div>
   );
 }
@@ -381,7 +479,7 @@ function LoyaltyVisual() {
 function Work() {
   return (
     <Section id="work" eyebrow="Featured Work" title="Featured Work">
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
         {projects.map((p, i) => (
           <motion.div
             key={p.slug}
@@ -393,38 +491,46 @@ function Work() {
             <Link
               to="/work/$slug"
               params={{ slug: p.slug }}
-              className="group block glass rounded-3xl p-5 hover:border-electric/40 hover:-translate-y-1 transition-all duration-500 shadow-card"
+              className="group relative block rounded-[28px] p-6 md:p-7 bg-card/60 border border-foreground/10 hover:border-electric/40 hover:-translate-y-1 transition-all duration-500 shadow-card backdrop-blur-xl overflow-hidden"
             >
+              <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-electric/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+
               <ProjectVisual slug={p.slug} accent={p.accent} />
-              <div className="mt-5 flex items-start justify-between gap-4">
-                <div>
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <span>{p.company}</span>
-                    <span className="w-1 h-1 rounded-full bg-muted-foreground/50" />
-                    <span className="text-electric">{p.tag}</span>
-                  </div>
-                  <h3 className="mt-2 text-xl md:text-2xl font-semibold tracking-tight leading-snug group-hover:text-gradient transition">
-                    {p.title}
-                  </h3>
-                </div>
-                <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-foreground group-hover:rotate-12 transition mt-1.5 shrink-0" />
+
+              <div className="mt-6 flex items-center gap-2 flex-wrap">
+                <CompanyMark company={p.company} />
+                <span className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-gradient-accent/15 text-electric border border-electric/25">
+                  {p.tag}
+                </span>
               </div>
-              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{p.summary}</p>
-              <ul className="mt-4 space-y-1.5">
-                {p.highlights.map((h) => (
-                  <li key={h} className="flex items-start gap-2 text-sm text-foreground/85">
-                    <span className="mt-1.5 w-1 h-1 rounded-full bg-electric shrink-0" />
+
+              <h3 className="mt-4 text-2xl md:text-[1.7rem] font-semibold tracking-tight leading-[1.15] text-foreground group-hover:text-gradient transition">
+                {p.title}
+              </h3>
+
+              <p className="mt-3 text-[15px] text-muted-foreground leading-relaxed">
+                {p.summary}
+              </p>
+
+              <ul className="mt-5 space-y-1.5">
+                {p.highlights.slice(0, 3).map((h) => (
+                  <li key={h} className="flex items-center gap-2.5 text-[13px] text-foreground/80">
+                    <span className="w-1 h-1 rounded-full bg-electric shrink-0" />
                     {h}
                   </li>
                 ))}
               </ul>
-              <div className="mt-5 pt-5 border-t border-border/60 flex items-center justify-between">
+
+              <div className="mt-7 pt-5 border-t border-border/60 flex items-end justify-between gap-4">
                 <div>
-                  <div className="text-[10px] uppercase tracking-wider text-muted-foreground">Impact</div>
-                  <div className="text-sm font-medium text-foreground mt-0.5">{p.impact}</div>
+                  <div className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">Impact</div>
+                  <div className="mt-1 text-2xl md:text-3xl font-semibold tracking-tight text-gradient leading-none">
+                    {p.impact}
+                  </div>
                 </div>
-                <span className="text-xs font-medium px-3 py-1.5 rounded-full bg-foreground/5 group-hover:bg-foreground group-hover:text-background transition">
-                  View project →
+                <span className="inline-flex items-center gap-1.5 text-xs font-medium pl-4 pr-3 py-2 rounded-full bg-foreground/5 border border-foreground/10 text-foreground/85 group-hover:bg-foreground group-hover:text-background group-hover:border-foreground transition-all">
+                  View case study
+                  <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </span>
               </div>
             </Link>
@@ -461,11 +567,6 @@ function Timeline() {
             }`} />
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
               <h3 className="text-lg font-semibold">{it.c}</h3>
-              {it.highlight && (
-                <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-gradient-accent/20 text-electric border border-electric/30">
-                  IIT Roorkee Alumni
-                </span>
-              )}
             </div>
             <div className="text-sm text-foreground/80 mt-0.5">{it.r}</div>
             <div className="text-xs text-muted-foreground mt-1 tabular-nums">{it.d}</div>
@@ -540,12 +641,6 @@ function Contact() {
             className="inline-flex items-center gap-2 px-5 py-3 rounded-full glass hover:bg-card transition"
           >
             <Mail className="w-4 h-4" /> Email
-          </a>
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-full glass hover:bg-card transition"
-          >
-            <Download className="w-4 h-4" /> Resume
           </a>
         </div>
         <div className="mt-20 text-xs text-muted-foreground">
