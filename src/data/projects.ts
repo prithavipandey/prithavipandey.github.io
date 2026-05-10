@@ -86,9 +86,9 @@ export const projects: Project[] = [
   },
   {
     slug: "emerging-commerce-tiktok-llm",
-    title: "Emerging Commerce: TikTok + LLM Integrations",
+    title: "Emerging Channels: Marketplace & LLM Platform Integrations",
     company: "Victoria's Secret",
-    tag: "Marketplace & Future Commerce",
+    tag: "Marketplace & AI Commerce",
     summary:
       "Expanded commerce beyond the website by building new discovery and acquisition channels across social and conversational surfaces.",
     highlights: [
