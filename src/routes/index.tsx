@@ -529,7 +529,7 @@ function Work() {
                   </div>
                 </div>
                 <span className="inline-flex items-center gap-1.5 text-xs font-medium pl-4 pr-3 py-2 rounded-full bg-foreground/5 border border-foreground/10 text-foreground/85 group-hover:bg-foreground group-hover:text-background group-hover:border-foreground transition-all">
-                  View case study
+                  View Project
                   <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </span>
               </div>
