@@ -1,14 +1,14 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Check } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, TrendingUp } from "lucide-react";
 import { SiteNav } from "@/components/site-nav";
 import { getProject, projects, type Project } from "@/data/projects";
 
 export const Route = createFileRoute("/work/$slug")({
   head: ({ params }) => {
     const p = getProject(params.slug);
-    const title = p ? `${p.title} — Prithavi Pandey` : "Case study — Prithavi Pandey";
-    const description = p?.summary ?? "Product case study";
+    const title = p ? `${p.title} — Prithavi Pandey` : "Project — Prithavi Pandey";
+    const description = p?.summary ?? "Product project";
     return {
       meta: [
         { title },
@@ -27,7 +27,7 @@ export const Route = createFileRoute("/work/$slug")({
   notFoundComponent: () => (
     <div className="min-h-screen grid place-items-center text-center px-4 dark">
       <div>
-        <div className="text-sm text-muted-foreground">Case study not found</div>
+        <div className="text-sm text-muted-foreground">Project not found</div>
         <Link to="/" className="mt-4 inline-flex text-electric">← Back home</Link>
       </div>
     </div>
@@ -63,6 +63,8 @@ function CaseStudy() {
   const p = Route.useLoaderData() as Project;
   const idx = projects.findIndex((x) => x.slug === p.slug);
   const next = projects[(idx + 1) % projects.length];
+  const headline = p.detail.metrics[0];
+  const restMetrics = p.detail.metrics.slice(1);
 
   return (
     <div className="min-h-screen dark relative">
@@ -82,18 +84,36 @@ function CaseStudy() {
                 {p.tag}
               </span>
             </div>
-            <h1 className="mt-6 text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-gradient">
+            <h1 className="mt-6 text-4xl md:text-5xl lg:text-[3.75rem] font-semibold tracking-[-0.02em] leading-[1.15] text-gradient pb-2 [overflow-wrap:anywhere]">
               {p.title}
             </h1>
             <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl leading-relaxed">
               {p.summary}
             </p>
 
-            <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3">
-              {p.detail.metrics.map((m) => (
-                <div key={m.label} className="glass rounded-2xl p-4">
-                  <div className="text-xl md:text-2xl font-semibold text-gradient">{m.value}</div>
-                  <div className="mt-1 text-xs text-muted-foreground">{m.label}</div>
+            {/* Premium impact strip */}
+            <div className="mt-12 grid md:grid-cols-[1.2fr_1fr_1fr_1fr] gap-3">
+              <div className="relative overflow-hidden rounded-2xl p-5 md:p-6 border border-electric/30 bg-gradient-to-br from-electric/[0.12] via-card/60 to-transparent shadow-glow">
+                <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-electric/60 to-transparent" />
+                <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.18em] text-electric/90">
+                  <TrendingUp className="w-3.5 h-3.5" /> Business impact
+                </div>
+                <div className="mt-3 text-4xl md:text-5xl font-semibold tracking-[-0.02em] text-gradient leading-none pb-1">
+                  {headline.value}
+                </div>
+                <div className="mt-2 text-xs md:text-sm text-foreground/75">{headline.label}</div>
+              </div>
+              {restMetrics.map((m) => (
+                <div
+                  key={m.label}
+                  className="relative rounded-2xl p-5 bg-card/60 border border-foreground/10 hover:border-electric/30 transition backdrop-blur"
+                >
+                  <div className="text-2xl md:text-3xl font-semibold tracking-[-0.01em] text-foreground leading-none pb-1">
+                    {m.value}
+                  </div>
+                  <div className="mt-3 text-[11px] uppercase tracking-wider text-muted-foreground">
+                    {m.label}
+                  </div>
                 </div>
               ))}
             </div>
@@ -101,30 +121,13 @@ function CaseStudy() {
         </header>
 
         <div className="mx-auto max-w-4xl px-4 mt-16">
-          {/* Architecture / flow */}
-          <div className="glass rounded-3xl p-6 md:p-10 shadow-card">
-            <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground mb-6">
-              Architecture / Flow
-            </div>
-            <div className="flex flex-col gap-3">
-              {p.detail.flow.map((step, i) => (
-                <div key={step} className="flex items-center gap-3">
-                  <div className="grid place-items-center w-8 h-8 rounded-full bg-gradient-accent/15 border border-electric/30 text-xs text-electric tabular-nums shrink-0">
-                    {String(i + 1).padStart(2, "0")}
-                  </div>
-                  <div className="flex-1 px-4 py-3 rounded-xl bg-card/50 border border-border/60 text-sm md:text-base">
-                    {step}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <ArchitectureFlow steps={p.detail.flow} />
 
           <Block label="Problem">{p.detail.problem}</Block>
           <Block label="Why it mattered">{p.detail.why}</Block>
-          <Block label="Product strategy">{p.detail.strategy}</Block>
+          <Block label="Product Strategy">{p.detail.strategy}</Block>
           <Block label="My role">{p.detail.role}</Block>
-          <Block label="Key decisions">
+          <Block label="Key Product Decisions">
             <ul className="space-y-3">
               {p.detail.decisions.map((d) => (
                 <li key={d} className="flex items-start gap-3">
@@ -135,8 +138,8 @@ function CaseStudy() {
             </ul>
           </Block>
           <Block label="Execution">{p.detail.execution}</Block>
-          <Block label="Technical complexity">{p.detail.technical}</Block>
-          <Block label="Tradeoffs">
+          <Block label="Technical Complexity">{p.detail.technical}</Block>
+          <Block label="Tradeoffs & Challenges">
             <ul className="space-y-3">
               {p.detail.tradeoffs.map((d) => (
                 <li key={d} className="flex items-start gap-3">
@@ -146,18 +149,18 @@ function CaseStudy() {
               ))}
             </ul>
           </Block>
-          <Block label="Collaboration">{p.detail.collaboration}</Block>
+          <Block label="Cross-Functional Collaboration">{p.detail.collaboration}</Block>
           <Block label="Impact">
             <div className="grid sm:grid-cols-2 gap-3">
               {p.detail.metrics.map((m) => (
-                <div key={m.label} className="glass rounded-xl p-4">
-                  <div className="text-lg font-semibold text-gradient">{m.value}</div>
-                  <div className="text-xs text-muted-foreground mt-1">{m.label}</div>
+                <div key={m.label} className="rounded-xl p-4 bg-card/60 border border-foreground/10">
+                  <div className="text-xl font-semibold tracking-tight text-gradient leading-none pb-1">{m.value}</div>
+                  <div className="text-xs text-muted-foreground mt-2">{m.label}</div>
                 </div>
               ))}
             </div>
           </Block>
-          <Block label="Product thinking">
+          <Block label="Product Thinking">
             <p className="text-xl md:text-2xl font-medium text-gradient leading-snug">
               "{p.detail.thinking}"
             </p>
@@ -166,7 +169,7 @@ function CaseStudy() {
 
           {/* Next */}
           <div className="mt-20 pt-10 border-t border-border/60">
-            <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Next case study</div>
+            <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Next project</div>
             <Link
               to="/work/$slug"
               params={{ slug: next.slug }}
@@ -183,6 +186,83 @@ function CaseStudy() {
           </div>
         </div>
       </article>
+    </div>
+  );
+}
+
+function ArchitectureFlow({ steps }: { steps: string[] }) {
+  return (
+    <div className="relative rounded-3xl p-6 md:p-10 bg-gradient-to-br from-card/70 via-card/40 to-card/20 border border-foreground/10 shadow-card overflow-hidden">
+      <div className="absolute inset-0 grid-bg opacity-[0.10] pointer-events-none" />
+      <div className="absolute -top-32 -right-20 w-72 h-72 rounded-full bg-electric/10 blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-32 -left-20 w-72 h-72 rounded-full bg-violet/10 blur-3xl pointer-events-none" />
+
+      <div className="relative flex items-center justify-between mb-8">
+        <div>
+          <div className="text-[10px] uppercase tracking-[0.22em] text-electric/90">Platform Architecture</div>
+          <div className="mt-1 text-base md:text-lg font-medium text-foreground/90">
+            End-to-end product data flow
+          </div>
+        </div>
+        <div className="hidden md:flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-muted-foreground">
+          <span className="w-2 h-2 rounded-full bg-electric animate-pulse" />
+          live data
+        </div>
+      </div>
+
+      <div className="relative flex flex-col items-stretch gap-0">
+        {steps.map((step, i) => {
+          const isLast = i === steps.length - 1;
+          const isCore = /merchant workspace|product data layer/i.test(step);
+          return (
+            <div key={step} className="relative">
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className={`relative rounded-2xl px-5 py-4 md:px-6 md:py-5 border backdrop-blur-xl flex items-center justify-between gap-4 ${
+                  isCore
+                    ? "bg-gradient-to-r from-electric/15 via-card/60 to-violet/10 border-electric/40 shadow-glow"
+                    : "bg-card/60 border-foreground/10"
+                }`}
+              >
+                <div className="flex items-center gap-4 min-w-0">
+                  <div
+                    className={`grid place-items-center w-9 h-9 rounded-xl border tabular-nums text-[11px] font-medium shrink-0 ${
+                      isCore
+                        ? "bg-electric/20 border-electric/40 text-electric"
+                        : "bg-foreground/[0.04] border-foreground/15 text-muted-foreground"
+                    }`}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-base md:text-lg font-medium leading-tight">{step}</div>
+                    {isCore && (
+                      <div className="mt-1 text-[11px] uppercase tracking-wider text-electric/80">
+                        Core platform layer
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <div className="hidden sm:flex items-center gap-2 text-[10px] uppercase tracking-wider text-muted-foreground shrink-0">
+                  <span className="w-1.5 h-1.5 rounded-full bg-electric/70" />
+                  Stage {String(i + 1).padStart(2, "0")}
+                </div>
+              </motion.div>
+
+              {!isLast && (
+                <div className="relative flex justify-center py-2" aria-hidden>
+                  <div className="relative h-8 w-px bg-gradient-to-b from-electric/50 via-electric/30 to-transparent">
+                    <span className="absolute left-1/2 -translate-x-1/2 -bottom-1 w-1.5 h-1.5 rotate-45 border-r border-b border-electric/60" />
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
