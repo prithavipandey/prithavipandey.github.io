@@ -293,3 +293,164 @@ function ArchitectureFlow({ steps }: { steps: string[] }) {
     </div>
   );
 }
+
+function trackIcon(label: string) {
+  if (/checkout/i.test(label)) return CreditCard;
+  if (/fulfillment|eu/i.test(label)) return Truck;
+  return Globe2;
+}
+
+function flowStepIcon(step: string, isCheckout: boolean) {
+  if (/region|customer/i.test(step)) return MapPin;
+  if (/localized checkout|payments|currency/i.test(step)) return Globe2;
+  if (/checkout provider/i.test(step)) return CreditCard;
+  if (/improved checkout/i.test(step)) return Sparkles;
+  if (/inventory/i.test(step)) return Package;
+  if (/distribution center/i.test(step)) return Warehouse;
+  if (/delivery/i.test(step)) return Truck;
+  return isCheckout ? CreditCard : Truck;
+}
+
+function TrackColumn({
+  track,
+  accent,
+  side,
+}: {
+  track: TrackBlock;
+  accent: "electric" | "violet";
+  side: "left" | "right";
+}) {
+  const Icon = trackIcon(track.label);
+  const isCheckout = side === "left";
+  const ring = accent === "electric" ? "border-electric/30" : "border-violet/30";
+  const tag = accent === "electric" ? "text-electric bg-electric/10 border-electric/30" : "text-violet bg-violet/10 border-violet/30";
+  const line = accent === "electric" ? "from-electric/60 via-electric/30 to-transparent" : "from-violet/60 via-violet/30 to-transparent";
+
+  return (
+    <div className={`relative rounded-2xl p-5 md:p-6 bg-card/60 border ${ring} backdrop-blur-xl`}>
+      <div className={`inline-flex items-center gap-2 px-2.5 py-1 rounded-full border text-[10px] uppercase tracking-[0.18em] ${tag}`}>
+        <Icon className="w-3 h-3" /> {track.label}
+      </div>
+      <div className="mt-4 text-base md:text-lg font-medium text-foreground/90 leading-tight">
+        {track.title}
+      </div>
+
+      <div className="mt-5 flex flex-col gap-0">
+        {track.flow.map((step, i) => {
+          const StepIcon = flowStepIcon(step, isCheckout);
+          const isLast = i === track.flow.length - 1;
+          return (
+            <div key={step}>
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+                className="flex items-center gap-3 rounded-xl px-3 py-2.5 bg-foreground/[0.03] border border-foreground/10"
+              >
+                <span className={`grid place-items-center w-7 h-7 rounded-lg border ${accent === "electric" ? "border-electric/30 bg-electric/10 text-electric" : "border-violet/30 bg-violet/10 text-violet"}`}>
+                  <StepIcon className="w-3.5 h-3.5" />
+                </span>
+                <span className="text-sm text-foreground/90 leading-tight">{step}</span>
+              </motion.div>
+              {!isLast && (
+                <div className="flex justify-center" aria-hidden>
+                  <div className={`h-5 w-px bg-gradient-to-b ${line}`} />
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function DualTrackVisual({ tracks }: { tracks: NonNullable<Project["detail"]["tracks"]> }) {
+  return (
+    <div className="relative rounded-3xl p-6 md:p-10 bg-gradient-to-br from-card/70 via-card/40 to-card/20 border border-foreground/10 shadow-card overflow-hidden">
+      <div className="absolute inset-0 grid-bg opacity-[0.08] pointer-events-none" />
+      <div className="absolute -top-32 -left-20 w-72 h-72 rounded-full bg-electric/10 blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-32 -right-20 w-72 h-72 rounded-full bg-violet/10 blur-3xl pointer-events-none" />
+
+      <div className="relative flex items-end justify-between mb-6">
+        <div>
+          <div className="text-[10px] uppercase tracking-[0.22em] text-electric/90">Dual-Track Program</div>
+          <div className="mt-1 text-base md:text-lg font-medium text-foreground/90">
+            Two parallel workstreams, one international outcome
+          </div>
+        </div>
+      </div>
+
+      <div className="relative grid md:grid-cols-2 gap-5">
+        <TrackColumn track={tracks.left} accent="electric" side="left" />
+        <TrackColumn track={tracks.right} accent="violet" side="right" />
+      </div>
+
+      {/* Convergence */}
+      <div className="relative mt-6 flex flex-col items-center">
+        <div className="hidden md:flex w-full items-center justify-center gap-0 -mt-1 mb-1" aria-hidden>
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-electric/40 to-foreground/20" />
+          <div className="w-2 h-2 mx-2 rounded-full bg-foreground/40" />
+          <div className="h-px flex-1 bg-gradient-to-l from-transparent via-violet/40 to-foreground/20" />
+        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5 }}
+          className="relative inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-electric/15 via-card/70 to-violet/15 border border-foreground/15 shadow-glow"
+        >
+          <Sparkles className="w-4 h-4 text-electric" />
+          <span className="text-sm md:text-base font-medium text-foreground/95">
+            {tracks.convergence}
+          </span>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
+function DualInitiativeCards({ tracks }: { tracks: NonNullable<Project["detail"]["tracks"]> }) {
+  const cols: { track: TrackBlock; accent: "electric" | "violet" }[] = [
+    { track: tracks.left, accent: "electric" },
+    { track: tracks.right, accent: "violet" },
+  ];
+  return (
+    <div className="grid md:grid-cols-2 gap-4">
+      {cols.map(({ track, accent }) => {
+        const Icon = trackIcon(track.label);
+        const ring = accent === "electric" ? "border-electric/30" : "border-violet/30";
+        const tag = accent === "electric" ? "text-electric bg-electric/10 border-electric/30" : "text-violet bg-violet/10 border-violet/30";
+        const headline = track.metrics[0];
+        const rest = track.metrics.slice(1);
+        return (
+          <div
+            key={track.label}
+            className={`relative rounded-2xl p-6 bg-card/60 border ${ring} backdrop-blur-xl overflow-hidden`}
+          >
+            <div className={`absolute inset-x-0 -top-px h-px ${accent === "electric" ? "bg-gradient-to-r from-transparent via-electric/60 to-transparent" : "bg-gradient-to-r from-transparent via-violet/60 to-transparent"}`} />
+            <div className={`inline-flex items-center gap-2 px-2.5 py-1 rounded-full border text-[10px] uppercase tracking-[0.18em] ${tag}`}>
+              <Icon className="w-3 h-3" /> {track.label}
+            </div>
+            <div className="mt-5">
+              <div className="text-4xl md:text-5xl font-semibold tracking-[-0.02em] text-gradient leading-none pb-1">
+                {headline.value}
+              </div>
+              <div className="mt-2 text-xs md:text-sm text-foreground/75">{headline.label}</div>
+            </div>
+            <div className="mt-5 grid grid-cols-1 gap-2">
+              {rest.map((m) => (
+                <div key={m.label} className="flex items-baseline justify-between gap-3 rounded-xl px-3 py-2.5 bg-foreground/[0.03] border border-foreground/10">
+                  <span className="text-sm md:text-base font-medium text-foreground/95">{m.value}</span>
+                  <span className="text-[11px] uppercase tracking-wider text-muted-foreground text-right">{m.label}</span>
+                </div>
+              ))}
+            </div>
+            <p className="mt-5 text-sm text-muted-foreground leading-relaxed">{track.description}</p>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
