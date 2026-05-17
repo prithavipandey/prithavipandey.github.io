@@ -18,10 +18,23 @@ export type Project = {
     tradeoffs: string[];
     collaboration: string;
     metrics: { label: string; value: string }[];
-    thinking: string;
+    thinking?: string;
     outcome: string;
     flow: string[];
+    tracks?: {
+      left: TrackBlock;
+      right: TrackBlock;
+      convergence: string;
+    };
   };
+};
+
+export type TrackBlock = {
+  label: string;
+  title: string;
+  description: string;
+  metrics: { value: string; label: string }[];
+  flow: string[];
 };
 
 export const projects: Project[] = [
