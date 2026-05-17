@@ -18,10 +18,23 @@ export type Project = {
     tradeoffs: string[];
     collaboration: string;
     metrics: { label: string; value: string }[];
-    thinking: string;
+    thinking?: string;
     outcome: string;
     flow: string[];
+    tracks?: {
+      left: TrackBlock;
+      right: TrackBlock;
+      convergence: string;
+    };
   };
+};
+
+export type TrackBlock = {
+  label: string;
+  title: string;
+  description: string;
+  metrics: { value: string; label: string }[];
+  flow: string[];
 };
 
 export const projects: Project[] = [
@@ -142,58 +155,87 @@ export const projects: Project[] = [
   },
   {
     slug: "global-commerce-eu",
-    title: "Global Commerce: Checkout Migration + EU Fulfillment",
+    title: "International Expansion: Checkout Modernization & EU Fulfillment",
     company: "Victoria's Secret",
-    tag: "International Platform Scale",
+    tag: "Global Commerce Systems",
     summary:
-      "Modernized international commerce through a checkout transformation and Europe distribution-center fulfillment enablement.",
+      "Two parallel workstreams — a checkout provider migration and EU distribution center enablement — that together strengthened international customer experience and fulfillment.",
     highlights: [
-      "Localized checkout experiences",
-      "Europe DC fulfillment enablement",
-      "Global systems orchestration",
+      "Checkout provider migration",
+      "EU distribution center enablement",
+      "Multi-market rollout",
     ],
-    impact: "~$7M combined annual business uplift",
+    impact: "Stronger international commerce foundation",
     accent: "cyan",
     detail: {
       problem:
-        "International customers experienced a checkout that wasn't truly local — payment methods, currency, and pricing felt foreign — while EU orders shipped from the US, creating slow, expensive deliveries.",
-      why: "International growth is gated by two things: a checkout that feels native, and a fulfillment footprint that respects the customer's geography.",
+        "As Victoria's Secret expanded internationally, customer experience and operational efficiency varied significantly across markets. The existing checkout had limitations in supporting localized experiences across payments, currencies, and regional customer expectations. At the same time, European orders were fulfilled from the US, leading to longer delivery timelines, higher shipping costs, and operational inefficiencies. Improving international growth required both a stronger commerce experience and a more efficient fulfillment model.",
+      why: "International growth depends on more than market availability — it requires seamless customer experiences and efficient operational systems. Checkout performance directly impacts conversion and customer experience, while fulfillment speed and delivery experience influence customer satisfaction and repeat behavior. The opportunity was to improve international customer experience while creating a more scalable operational foundation for growth.",
       strategy:
-        "Migrate to a modern checkout platform with first-class localization, and stand up EU distribution to compress delivery times and unit economics.",
+        "The strategy focused on two parallel workstreams: (1) modernize checkout infrastructure through migration to a new checkout provider, and (2) improve regional fulfillment capabilities through EU distribution center enablement. The checkout migration focused on flexibility, performance, localization, and customer experience across international markets. The EU fulfillment initiative aimed to reduce delivery timelines and shipping complexity by moving fulfillment closer to customers. Together, these initiatives created a more scalable international commerce foundation.",
       role:
-        "PM across both workstreams — owning the checkout migration roadmap and partnering on EU fulfillment enablement as one coordinated international scale program.",
+        "Led product management across both workstreams as part of a broader international expansion initiative. Worked cross-functionally with engineering, business, operations, supply chain, and external partners to define requirements, prioritize rollout, and drive execution. Responsibilities included defining roadmap and priorities, coordinating multi-market rollout planning, aligning business and technical stakeholders, managing checkout migration requirements, supporting EU fulfillment enablement, and driving execution across interconnected systems.",
       decisions: [
-        "Treat localization as a product, not a translation layer.",
-        "Decouple payment, pricing, and fulfillment so each can evolve independently.",
-        "Sequence EU DC by category to de-risk the cutover.",
+        "Phased migration over big-bang rollout — checkout migration was executed in phases to reduce operational risk and ensure stability across markets.",
+        "Treat checkout and fulfillment as interconnected systems — customer experience improvements required coordination between front-end commerce and backend fulfillment.",
+        "Prioritize scalability alongside speed — the program built infrastructure to support future international growth, not just immediate gains.",
+        "Balance standardization with regional requirements — core platform consistency was maintained while enabling flexibility for regional operational needs.",
       ],
       execution:
-        "Phased checkout migration market by market with deep instrumentation, paired with an EU DC enablement workstream covering vendor integrations, inventory, and order routing.",
+        "Executed through parallel workstreams. Checkout Migration: rolled out migration to a new checkout provider in phases, ensuring continuity while improving localization, customer experience, and platform flexibility. EU Fulfillment: enabled EU distribution center fulfillment by coordinating vendor integrations, operational readiness, inventory alignment, and order routing. The phased approach reduced implementation risk while maintaining operational continuity.",
       technical:
-        "Checkout platform migration, payment orchestration, currency and tax services, regional inventory and order routing, and downstream returns flows.",
+        "Required coordination across multiple commerce and operational systems: checkout platform migration, payment integrations, localization capabilities, currency and regional configurations, order routing, regional inventory alignment, fulfillment workflows, and vendor/logistics integrations. Managing dependencies across customer experience and operational systems was a key complexity.",
       tradeoffs: [
-        "Single global checkout vs. regional flexibility.",
-        "Speed of cutover vs. risk to peak season.",
-        "EU assortment depth vs. fulfillment complexity.",
+        "Speed vs. operational risk — a phased rollout was prioritized to reduce disruption during migration.",
+        "Global consistency vs. regional flexibility — the program balanced platform standardization with country-level operational needs.",
+        "Customer experience vs. implementation complexity — improving localization and fulfillment required coordination across multiple technical and operational systems.",
       ],
       collaboration:
-        "Engineering, finance, tax, legal, supply chain, regional commercial teams and external payment / fulfillment partners.",
+        "Partnered closely with engineering, supply chain & fulfillment, business stakeholders, finance, regional commercial teams, external vendors and partners, and operations to align rollout priorities, execution plans, and operational readiness.",
       metrics: [
-        { label: "Combined annual uplift", value: "~$7M" },
-        { label: "EU delivery time", value: "−50%" },
-        { label: "Intl. checkout conversion", value: "Lifted" },
+        { label: "YoY revenue growth (checkout)", value: "15%" },
+        { label: "EU delivery timelines", value: "7–8d → 1–2d" },
       ],
-      thinking:
-        "Going global is a systems problem, not a translation problem. The checkout, the catalog, the inventory, and the fulfillment all have to move together.",
       outcome:
-        "Delivered a more native international experience and a regional fulfillment footprint that unlocks faster delivery and better economics in Europe.",
-      flow: [
-        "Customer Region",
-        "Localized Checkout (payments, pricing, currency)",
-        "Regional Fulfillment (EU DC)",
-        "Vendor Integrations",
-        "Faster Delivery",
-      ],
+        "Delivered a stronger international commerce foundation through improvements across both customer experience and fulfillment systems. The initiative improved checkout capabilities, strengthened regional fulfillment operations, and supported more scalable international growth.",
+      flow: [],
+      tracks: {
+        left: {
+          label: "Checkout Modernization",
+          title: "Modernized international checkout",
+          description:
+            "Enabled more scalable international checkout capabilities across payments, localization, and customer experience.",
+          metrics: [
+            { value: "15%", label: "YoY revenue growth" },
+            { value: "Multi-Market", label: "Checkout rollout" },
+            { value: "Improved", label: "Checkout experience & localization" },
+          ],
+          flow: [
+            "Customer Region",
+            "Localized Checkout (payments, currency, pricing)",
+            "New Checkout Provider",
+            "Improved Checkout Experience",
+          ],
+        },
+        right: {
+          label: "EU Fulfillment Enablement",
+          title: "Regional fulfillment closer to customers",
+          description:
+            "Moved fulfillment closer to customers through EU distribution enablement, significantly improving delivery experience.",
+          metrics: [
+            { value: "~$5M", label: "Annual business impact" },
+            { value: "7–8d → 1–2d", label: "EU delivery timelines" },
+            { value: "Improved", label: "Regional fulfillment experience" },
+          ],
+          flow: [
+            "EU Customer Orders",
+            "Regional Inventory",
+            "EU Distribution Center",
+            "Faster Delivery (7–8d → 1–2d)",
+          ],
+        },
+        convergence: "Better International Customer Experience",
+      },
     },
   },
   {
