@@ -1,8 +1,20 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Check, TrendingUp } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Check,
+  TrendingUp,
+  CreditCard,
+  Globe2,
+  Truck,
+  Warehouse,
+  MapPin,
+  Package,
+  Sparkles,
+} from "lucide-react";
 import { SiteNav } from "@/components/site-nav";
-import { getProject, projects, type Project } from "@/data/projects";
+import { getProject, projects, type Project, type TrackBlock } from "@/data/projects";
 
 export const Route = createFileRoute("/work/$slug")({
   head: ({ params }) => {
@@ -65,6 +77,7 @@ function CaseStudy() {
   const next = projects[(idx + 1) % projects.length];
   const headline = p.detail.metrics[0];
   const restMetrics = p.detail.metrics.slice(1);
+  const tracks = p.detail.tracks;
 
   return (
     <div className="min-h-screen dark relative">
@@ -91,7 +104,8 @@ function CaseStudy() {
               {p.summary}
             </p>
 
-            {/* Premium impact strip */}
+            {/* Premium impact strip — hidden for dual-track projects (e.g. International Expansion) */}
+            {!tracks && (
             <div className="mt-12 grid md:grid-cols-[1.2fr_1fr_1fr_1fr] gap-3">
               <div className="relative overflow-hidden rounded-2xl p-5 md:p-6 border border-electric/30 bg-gradient-to-br from-electric/[0.12] via-card/60 to-transparent shadow-glow">
                 <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-electric/60 to-transparent" />
@@ -117,11 +131,16 @@ function CaseStudy() {
                 </div>
               ))}
             </div>
+            )}
           </div>
         </header>
 
         <div className="mx-auto max-w-4xl px-4 mt-16">
-          <ArchitectureFlow steps={p.detail.flow} />
+          {tracks ? (
+            <DualTrackVisual tracks={tracks} />
+          ) : (
+            <ArchitectureFlow steps={p.detail.flow} />
+          )}
 
           <Block label="Problem">{p.detail.problem}</Block>
           <Block label="Why it mattered">{p.detail.why}</Block>
@@ -150,21 +169,29 @@ function CaseStudy() {
             </ul>
           </Block>
           <Block label="Cross-Functional Collaboration">{p.detail.collaboration}</Block>
-          <Block label="Impact">
-            <div className="grid sm:grid-cols-2 gap-3">
-              {p.detail.metrics.map((m) => (
-                <div key={m.label} className="rounded-xl p-4 bg-card/60 border border-foreground/10">
-                  <div className="text-xl font-semibold tracking-tight text-gradient leading-none pb-1">{m.value}</div>
-                  <div className="text-xs text-muted-foreground mt-2">{m.label}</div>
-                </div>
-              ))}
-            </div>
-          </Block>
-          <Block label="Product Thinking">
-            <p className="text-xl md:text-2xl font-medium text-gradient leading-snug">
-              "{p.detail.thinking}"
-            </p>
-          </Block>
+          {tracks ? (
+            <Block label="Initiative Outcomes">
+              <DualInitiativeCards tracks={tracks} />
+            </Block>
+          ) : (
+            <Block label="Impact">
+              <div className="grid sm:grid-cols-2 gap-3">
+                {p.detail.metrics.map((m) => (
+                  <div key={m.label} className="rounded-xl p-4 bg-card/60 border border-foreground/10">
+                    <div className="text-xl font-semibold tracking-tight text-gradient leading-none pb-1">{m.value}</div>
+                    <div className="text-xs text-muted-foreground mt-2">{m.label}</div>
+                  </div>
+                ))}
+              </div>
+            </Block>
+          )}
+          {p.detail.thinking && !tracks && (
+            <Block label="Product Thinking">
+              <p className="text-xl md:text-2xl font-medium text-gradient leading-snug">
+                "{p.detail.thinking}"
+              </p>
+            </Block>
+          )}
           <Block label="Outcome">{p.detail.outcome}</Block>
 
           {/* Next */}
