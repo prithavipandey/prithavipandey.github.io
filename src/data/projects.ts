@@ -99,58 +99,75 @@ export const projects: Project[] = [
   },
   {
     slug: "emerging-commerce-tiktok-llm",
-    title: "Emerging Channels: Marketplace & LLM Platform Integrations",
+    title: "Emerging Commerce Channels: Marketplace & Conversational Discovery",
     company: "Victoria's Secret",
-    tag: "Marketplace & AI Commerce",
+    tag: "Commerce Expansion & Discovery",
     summary:
-      "Expanded commerce beyond the website by building new discovery and acquisition channels across social and conversational surfaces.",
+      "Expanded commerce into emerging customer discovery channels through marketplace and conversational shopping experiences.",
     highlights: [
-      "TikTok marketplace integration",
-      "Conversational commerce experiences",
-      "Emerging discovery channels",
+      "TikTok Marketplace Integration",
+      "Conversational Shopping (OpenAI + Google UCP)",
+      "Catalog syndication via centralized PIM",
     ],
-    impact: "Incremental revenue + new acquisition channels",
+    impact: "New discovery & acquisition channels",
     accent: "violet",
     detail: {
       problem:
-        "Discovery was concentrated in owned channels. Younger customers were spending more time on social and conversational surfaces, and the brand needed presence where intent now forms.",
-      why: "Whoever owns discovery owns the relationship. Sitting out of marketplace and conversational commerce meant ceding a generation of high-intent customers to other brands.",
+        "Customer discovery behavior was evolving beyond traditional owned channels. Consumers increasingly explored products through social commerce platforms and conversational interfaces, creating new discovery and purchase journeys outside the brand website. Victoria's Secret needed to establish presence across these emerging commerce surfaces while maintaining a consistent product experience and accurate catalog representation. The challenge was enabling new acquisition and discovery channels without creating fragmented commerce systems.",
+      why:
+        "As customer discovery shifts across channels, commerce experiences need to meet customers where intent is forming. Social commerce platforms unlock new acquisition opportunities, while conversational interfaces create more personalized discovery experiences. The opportunity was to expand customer reach while ensuring product discovery remained accurate, scalable, and operationally sustainable.",
       strategy:
-        "Treat each emerging channel as a first-class commerce surface with its own catalog contract, merchandising lens, and measurement model — not a marketing afterthought.",
+        "The strategy focused on enabling emerging commerce channels through structured product data and reusable commerce infrastructure. Two key initiatives were launched: (1) TikTok Marketplace Integration — enabled product catalog syndication and shopping experiences through TikTok Shop, allowing customers to discover and browse Victoria's Secret products within the platform; and (2) Conversational Shopping via LLM Platforms — enabled conversational product discovery experiences across platforms such as OpenAI and Google UCP, allowing users to discover products through natural language interactions. Rather than creating channel-specific systems, the approach leveraged the centralized PIM platform as the single source of truth for product catalog and attributes. This ensured consistency across discovery surfaces while reducing operational complexity.",
       role:
-        "Owned product strategy and execution for the TikTok marketplace integration and the conversational shopping experience, partnering with engineering, merchandising and brand.",
+        "Led product efforts focused on catalog syndication and commerce channel enablement. For TikTok Shop, owned product requirements related to catalog integration and product syndication, partnering closely with cross-functional teams while fulfillment-related capabilities were managed by a separate product organization. For conversational shopping initiatives, worked on enabling structured product discovery experiences powered through centralized product catalog data. Collaborated closely with engineering, merchandising, platform teams, and external ecosystem partners to drive execution.",
       decisions: [
-        "Reuse the central PIM as the catalog source of truth for every new channel.",
-        "Build a thin orchestration layer rather than channel-specific stacks.",
-        "Anchor conversational shopping in real product attributes, not hallucinated copy.",
+        "Use centralized product data as the foundation — the PIM platform was used as the single source of truth to ensure consistency across all emerging channels.",
+        "Build reusable channel enablement patterns — rather than creating standalone integrations for each platform, reusable catalog syndication capabilities were prioritized.",
+        "Ground conversational discovery in structured product attributes — conversational shopping experiences relied on structured catalog data to improve product relevance and consistency.",
+        "Balance speed with operational scalability — the approach prioritized faster experimentation with new channels while maintaining manageable operational complexity.",
       ],
       execution:
-        "Launched TikTok shop integration with curated assortments, then layered a conversational shopping prototype that mapped natural language intent to filtered product discovery.",
+        "TikTok Marketplace Integration: enabled catalog synchronization and shopping experiences through TikTok Shop, allowing customers to browse Victoria's Secret products directly within the platform. The initiative focused on product catalog syndication, assortment enablement, and maintaining accurate product representation. Conversational Shopping: enabled conversational product discovery across OpenAI and Google UCP experiences. Customers could discover products using natural language interactions, with structured product information powering discovery experiences. In OpenAI-based experiences, users discovered products conversationally and navigated to Victoria's Secret website for purchase. In Google UCP, experiences supported conversational discovery along with more seamless commerce flows, including checkout within the chat interface. The centralized PIM platform powered product data consistency across both initiatives.",
       technical:
-        "Catalog syndication, channel-specific feed transformations, intent parsing, retrieval over structured product attributes, and ranking tuned for conversational context.",
+        "The initiative required coordination across commerce, catalog, and discovery systems, including product catalog syndication, marketplace integrations, structured product attributes, feed transformation logic, conversational discovery enablement, LLM-powered retrieval experiences, channel-specific commerce requirements, and product data consistency across platforms. Maintaining consistent product experiences across emerging channels while avoiding duplicated systems was a key challenge.",
       tradeoffs: [
-        "Brand control vs. native channel behavior.",
-        "Breadth of assortment vs. quality of curation.",
-        "Generative responses vs. deterministic, attribute-grounded answers.",
+        "Speed of channel expansion vs. operational scalability — new commerce channels required faster experimentation while maintaining scalable and manageable systems.",
+        "Discovery flexibility vs. catalog consistency — conversational experiences needed flexibility while remaining grounded in structured product information.",
+        "Channel-specific experiences vs. reusable infrastructure — the initiative balanced customization for individual platforms with reusable catalog and product foundations.",
       ],
       collaboration:
-        "Brand, merchandising, engineering, data science, legal and external platform partners.",
-      metrics: [
-        { label: "New channel revenue", value: "Incremental" },
-        { label: "Acquisition surfaces", value: "+2" },
-        { label: "Time to channel launch", value: "Weeks" },
-      ],
-      thinking:
-        "Future commerce isn't a single destination. The product job is to make the catalog liquid — ready to show up wherever intent forms, with the same trust and quality.",
+        "Partnered closely with engineering, merchandising teams, platform teams, marketing & commerce stakeholders, external platform partners, and data & product teams to enable scalable product discovery experiences across emerging commerce channels.",
+      metrics: [],
       outcome:
-        "Stood up a repeatable pattern for launching commerce on emerging channels and validated conversational shopping as a credible discovery surface.",
-      flow: [
-        "Customer intent on social or chat",
-        "Channel orchestration layer",
-        "Central product catalog (PIM)",
-        "Contextual ranking & recommendations",
-        "Native checkout / handoff",
-      ],
+        "Expanded Victoria's Secret presence across emerging commerce channels through marketplace enablement and conversational discovery experiences. The initiative established reusable foundations for future commerce channel expansion while improving how customers discover products outside traditional owned experiences.",
+      flow: [],
+      tracks: {
+        left: {
+          label: "Marketplace Commerce",
+          title: "TikTok Marketplace Integration",
+          description:
+            "Enabled catalog-driven shopping experiences within TikTok Shop through scalable product syndication.",
+          metrics: [
+            { value: "3M+", label: "Monthly Impressions" },
+            { value: "3.4%", label: "Click-through Rate (CTR)" },
+            { value: "$50K+", label: "Incremental Monthly Revenue" },
+          ],
+          flow: [],
+        },
+        right: {
+          label: "Conversational Commerce",
+          title: "LLM-Powered Shopping Experience",
+          description:
+            "Enabled conversational product discovery powered by structured product catalog data.",
+          metrics: [
+            { value: "OpenAI + Google UCP", label: "Platform Enablement" },
+            { value: "Launched", label: "Customer-Facing Experience" },
+            { value: "~2%", label: "Projected Revenue Uplift" },
+          ],
+          flow: [],
+        },
+        convergence: "",
+      },
     },
   },
   {
