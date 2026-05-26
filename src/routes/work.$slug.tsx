@@ -15,6 +15,8 @@ import {
 } from "lucide-react";
 import { SiteNav } from "@/components/site-nav";
 import { getProject, projects, type Project, type TrackBlock } from "@/data/projects";
+import tiktokShopMock from "@/assets/tiktok-shop-mock.jpg";
+import llmShoppingMock from "@/assets/llm-shopping-mock.jpg";
 
 export const Route = createFileRoute("/work/$slug")({
   head: ({ params }) => {
@@ -78,6 +80,7 @@ function CaseStudy() {
   const headline = p.detail.metrics[0];
   const restMetrics = p.detail.metrics.slice(1);
   const tracks = p.detail.tracks;
+  const isEmerging = p.slug === "emerging-commerce-tiktok-llm";
 
   return (
     <div className="min-h-screen dark relative">
@@ -136,7 +139,19 @@ function CaseStudy() {
         </header>
 
         <div className="mx-auto max-w-4xl px-4 mt-16">
-          {tracks ? (
+          {isEmerging && tracks ? (
+            <section>
+              <div className="flex items-end justify-between mb-5">
+                <div>
+                  <div className="text-[10px] uppercase tracking-[0.22em] text-electric/90">Initiative Metrics</div>
+                  <div className="mt-1 text-base md:text-lg font-medium text-foreground/90">
+                    Two emerging commerce initiatives
+                  </div>
+                </div>
+              </div>
+              <DualInitiativeCards tracks={tracks} />
+            </section>
+          ) : tracks ? (
             <DualTrackVisual tracks={tracks} />
           ) : (
             <ArchitectureFlow steps={p.detail.flow} />
@@ -157,6 +172,31 @@ function CaseStudy() {
             </ul>
           </Block>
           <Block label="Execution">{p.detail.execution}</Block>
+          {isEmerging && (
+            <Block label="Experience in Action">
+              <p className="text-sm text-muted-foreground -mt-1">
+                How customers discovered and engaged with products across emerging commerce channels.
+              </p>
+              <div className="grid md:grid-cols-2 gap-5 pt-2">
+                <ExperienceCard
+                  label="Marketplace Commerce"
+                  title="TikTok Marketplace Integration"
+                  image={tiktokShopMock}
+                  alt="Victoria's Secret storefront within TikTok Shop"
+                  copy="Enabled catalog-driven product discovery and shopping experiences through TikTok Shop using centralized product syndication."
+                  aspect="aspect-[3/4]"
+                />
+                <ExperienceCard
+                  label="Conversational Commerce"
+                  title="LLM-Powered Shopping Experience"
+                  image={llmShoppingMock}
+                  alt="ChatGPT conversation surfacing Victoria's Secret loungewear recommendations"
+                  copy="Enabled conversational product discovery across OpenAI and Google UCP powered by structured product catalog data."
+                  aspect="aspect-[4/3]"
+                />
+              </div>
+            </Block>
+          )}
           <Block label="Technical Complexity">{p.detail.technical}</Block>
           <Block label="Tradeoffs & Challenges">
             <ul className="space-y-3">
@@ -169,11 +209,11 @@ function CaseStudy() {
             </ul>
           </Block>
           <Block label="Cross-Functional Collaboration">{p.detail.collaboration}</Block>
-          {tracks ? (
+          {tracks && !isEmerging ? (
             <Block label="Initiative Outcomes">
               <DualInitiativeCards tracks={tracks} />
             </Block>
-          ) : (
+          ) : !tracks ? (
             <Block label="Impact">
               <div className="grid sm:grid-cols-2 gap-3">
                 {p.detail.metrics.map((m) => (
@@ -184,7 +224,7 @@ function CaseStudy() {
                 ))}
               </div>
             </Block>
-          )}
+          ) : null}
           {p.detail.thinking && !tracks && (
             <Block label="Product Thinking">
               <p className="text-xl md:text-2xl font-medium text-gradient leading-snug">
