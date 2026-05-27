@@ -73,6 +73,46 @@ function Block({ label, children }: { label: string; children: React.ReactNode }
   );
 }
 
+function ExperienceCard({
+  label,
+  title,
+  image,
+  alt,
+  copy,
+  aspect,
+}: {
+  label: string;
+  title: string;
+  image: string;
+  alt: string;
+  copy: string;
+  aspect: string;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.5 }}
+      className="group relative rounded-2xl overflow-hidden bg-card/60 border border-foreground/10 hover:border-electric/30 transition"
+    >
+      <div className={`${aspect} w-full overflow-hidden bg-foreground/5`}>
+        <img
+          src={image}
+          alt={alt}
+          loading="lazy"
+          className="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500"
+        />
+      </div>
+      <div className="p-5 md:p-6">
+        <div className="text-[10px] uppercase tracking-[0.22em] text-electric/90">{label}</div>
+        <div className="mt-1 text-lg md:text-xl font-semibold tracking-tight">{title}</div>
+        <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{copy}</p>
+      </div>
+    </motion.div>
+  );
+}
+
 function CaseStudy() {
   const p = Route.useLoaderData() as Project;
   const idx = projects.findIndex((x) => x.slug === p.slug);
@@ -492,45 +532,5 @@ function DualInitiativeCards({ tracks }: { tracks: NonNullable<Project["detail"]
         );
       })}
     </div>
-  );
-}
-
-function ExperienceCard({
-  label,
-  title,
-  image,
-  alt,
-  copy,
-  aspect,
-}: {
-  label: string;
-  title: string;
-  image: string;
-  alt: string;
-  copy: string;
-  aspect: string;
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.5 }}
-      className="group relative rounded-2xl overflow-hidden bg-card/60 border border-foreground/10 hover:border-electric/30 transition"
-    >
-      <div className={`${aspect} w-full overflow-hidden bg-foreground/5`}>
-        <img
-          src={image}
-          alt={alt}
-          loading="lazy"
-          className="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500"
-        />
-      </div>
-      <div className="p-5 md:p-6">
-        <div className="text-[10px] uppercase tracking-[0.22em] text-electric/90">{label}</div>
-        <div className="mt-1 text-lg md:text-xl font-semibold tracking-tight">{title}</div>
-        <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{copy}</p>
-      </div>
-    </motion.div>
   );
 }
