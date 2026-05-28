@@ -21,7 +21,7 @@ import llmShoppingMock from "@/assets/llm-shopping-mock.jpg";
 export const Route = createFileRoute("/work/$slug")({
   head: ({ params }) => {
     const p = getProject(params.slug);
-    const title = p ? `${p.title} — Prithavi Pandey` : "Project — Prithavi Pandey";
+    const title = p ? `${p.title} — Prithvi Pandey` : "Project — Prithvi Pandey";
     const description = p?.summary ?? "Product project";
     return {
       meta: [

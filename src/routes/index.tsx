@@ -43,13 +43,13 @@ import { projects } from "@/data/projects";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Prithavi Pandey — Senior Product Manager" },
+      { title: "Prithvi Pandey — Senior Product Manager" },
       {
         name: "description",
         content:
           "Senior Product Manager building scalable commerce, platform, marketplace, growth, and AI-enabled products. ~9 years across product, data science, and engineering.",
       },
-      { property: "og:title", content: "Prithavi Pandey — Senior Product Manager" },
+      { property: "og:title", content: "Prithvi Pandey — Senior Product Manager" },
       {
         property: "og:description",
         content:
@@ -117,10 +117,8 @@ function Hero() {
   const cards = [
     { v: "9+", l: "Years experience" },
     { v: "5+", l: "Years in product" },
-    { v: "$20M+", l: "Annual business impact" },
-    { v: "0→1", l: "Product building" },
-    { v: "Global", l: "Commerce systems" },
-    { v: "Platform", l: "Growth & marketplace" },
+    { v: "$15M+", l: "Annual business impact" },
+    { v: "0→1 & Scale", l: "Product building" },
   ];
 
   return (
@@ -149,7 +147,7 @@ function Hero() {
           transition={{ duration: 0.9, delay: 0.05, ease: "easeOut" }}
           className="mt-6 text-5xl md:text-7xl lg:text-[5.5rem] font-semibold tracking-[-0.03em] leading-[1.02] text-gradient max-w-5xl"
         >
-          Hi, I'm Prithavi — Product leader & builder
+          Hi, I'm Prithvi — Product leader & builder
         </motion.h1>
 
         <motion.p
@@ -158,8 +156,7 @@ function Hero() {
           transition={{ duration: 0.9, delay: 0.15 }}
           className="mt-7 max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed"
         >
-          Senior Product Manager with ~9 years across product, data science, and engineering — building scalable
-          commerce, platform, and customer experiences that drive measurable business impact.
+          An IIT Roorkee alumnus and Senior Product Manager at Victoria's Secret — bridging user needs, business goals, and engineering realities to build commerce and product experiences that genuinely matter.
         </motion.p>
 
         <motion.div
@@ -187,7 +184,7 @@ function Hero() {
           initial="hidden"
           animate="show"
           variants={{ show: { transition: { staggerChildren: 0.06, delayChildren: 0.4 } } }}
-          className="mt-14 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3"
+          className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-3"
         >
           {cards.map((c) => (
             <motion.div
@@ -487,11 +484,12 @@ function Work() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, delay: (i % 2) * 0.1 }}
+            className="h-full"
           >
             <Link
               to="/work/$slug"
               params={{ slug: p.slug }}
-              className="group relative block rounded-[28px] p-6 md:p-7 bg-card/60 border border-foreground/10 hover:border-electric/40 hover:-translate-y-1 transition-all duration-500 shadow-card backdrop-blur-xl overflow-hidden"
+              className="group relative flex flex-col h-full rounded-[28px] p-6 md:p-7 bg-card/60 border border-foreground/10 hover:border-electric/40 hover:-translate-y-1 transition-all duration-500 shadow-card backdrop-blur-xl overflow-hidden"
             >
               <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-electric/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
@@ -521,7 +519,7 @@ function Work() {
                 ))}
               </ul>
 
-              <div className="mt-7 pt-5 border-t border-border/60 flex items-end justify-between gap-4">
+              <div className="mt-auto pt-5 border-t border-border/60 flex items-end justify-between gap-4">
                 <div>
                   <div className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">Impact</div>
                   <div className="mt-1 text-2xl md:text-3xl font-semibold tracking-tight text-gradient leading-none">
@@ -548,7 +546,7 @@ function Timeline() {
     { c: "MakeMyTrip", r: "Associate Product Manager — Growth", d: "Apr 2021 — Jul 2023", icon: Briefcase },
     { c: "64 Squares", r: "Data Scientist", d: "Aug 2018 — Mar 2021", icon: Briefcase },
     { c: "Capgemini", r: "Associate Consultant", d: "Aug 2017 — Jul 2018", icon: Briefcase },
-    { c: "IIT Roorkee", r: "B.Tech, Metallurgical & Materials Engineering", d: "2013 — 2017", icon: GraduationCap, highlight: true },
+    { c: "IIT Roorkee", r: "B.Tech, Metallurgical & Materials Engineering", d: "2013 — 2017", icon: GraduationCap },
   ];
   return (
     <Section eyebrow="Timeline" title="Career Path">
@@ -644,7 +642,7 @@ function Contact() {
           </a>
         </div>
         <div className="mt-20 text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Prithavi Pandey. Built with care.
+          © {new Date().getFullYear()} Prithvi Pandey. Built with care.
         </div>
       </div>
     </section>
