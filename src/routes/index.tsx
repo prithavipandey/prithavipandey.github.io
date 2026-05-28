@@ -484,11 +484,12 @@ function Work() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, delay: (i % 2) * 0.1 }}
+            className="h-full"
           >
             <Link
               to="/work/$slug"
               params={{ slug: p.slug }}
-              className="group relative block rounded-[28px] p-6 md:p-7 bg-card/60 border border-foreground/10 hover:border-electric/40 hover:-translate-y-1 transition-all duration-500 shadow-card backdrop-blur-xl overflow-hidden"
+              className="group relative flex flex-col h-full rounded-[28px] p-6 md:p-7 bg-card/60 border border-foreground/10 hover:border-electric/40 hover:-translate-y-1 transition-all duration-500 shadow-card backdrop-blur-xl overflow-hidden"
             >
               <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-electric/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
@@ -518,7 +519,7 @@ function Work() {
                 ))}
               </ul>
 
-              <div className="mt-7 pt-5 border-t border-border/60 flex items-end justify-between gap-4">
+              <div className="mt-auto pt-5 border-t border-border/60 flex items-end justify-between gap-4">
                 <div>
                   <div className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">Impact</div>
                   <div className="mt-1 text-2xl md:text-3xl font-semibold tracking-tight text-gradient leading-none">
@@ -545,7 +546,7 @@ function Timeline() {
     { c: "MakeMyTrip", r: "Associate Product Manager — Growth", d: "Apr 2021 — Jul 2023", icon: Briefcase },
     { c: "64 Squares", r: "Data Scientist", d: "Aug 2018 — Mar 2021", icon: Briefcase },
     { c: "Capgemini", r: "Associate Consultant", d: "Aug 2017 — Jul 2018", icon: Briefcase },
-    { c: "IIT Roorkee", r: "B.Tech, Metallurgical & Materials Engineering", d: "2013 — 2017", icon: GraduationCap, highlight: true },
+    { c: "IIT Roorkee", r: "B.Tech, Metallurgical & Materials Engineering", d: "2013 — 2017", icon: GraduationCap },
   ];
   return (
     <Section eyebrow="Timeline" title="Career Path">
