@@ -80,8 +80,8 @@ export const projects: Project[] = [
       metrics: [
         { label: "Annual uplift", value: "~$4M" },
         { label: "Enrichment accuracy", value: "90%+" },
-        { label: "Operational reduction", value: "80 hrs / mo" },
-        { label: "Operational savings", value: "~$40K / mo" },
+        { label: "Operational reduction", value: "80 hrs / month" },
+        { label: "Operational savings", value: "~$40K / month" },
       ],
       thinking:
         "Platform products win by removing friction for every team downstream. The real success metric isn't the platform itself — it's how much faster every other team can ship because of it.",
