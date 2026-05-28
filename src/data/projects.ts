@@ -171,6 +171,56 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "loyalty-revamp",
+    title: "Loyalty Program Revamp",
+    company: "MakeMyTrip",
+    tag: "Growth & Retention",
+    summary:
+      "Redesigned the loyalty experience to simplify engagement and improve retention for high-value travelers.",
+    highlights: [
+      "Simplified 3 tiers → 2 tiers",
+      "Travel rewards ecosystem",
+      "Personalized customer journeys",
+    ],
+    impact: "15% increase in retention",
+    accent: "amber",
+    detail: {
+      problem:
+        "The loyalty program had grown complex — three tiers, overlapping benefits, unclear earn-and-burn mechanics. Engagement was concentrated in a small base and the rest of the program felt invisible.",
+      why: "In a high-frequency, low-margin travel business, retention compounds. Even small lifts in repeat behavior change the unit economics of acquisition.",
+      strategy:
+        "Simplify the structure, sharpen the rewards that actually drive repeat travel, and personalize the journey so each user sees the next valuable step.",
+      role:
+        "PM for the revamp — owned the simplification thesis, the rewards economics with finance, and the experience redesign with design and engineering.",
+      decisions: [
+        "Collapse three tiers into two with clearer thresholds.",
+        "Shift rewards toward the highest-frequency travel actions.",
+        "Personalize the loyalty surface based on the user's travel pattern.",
+      ],
+      execution:
+        "Ran the redesign as a sequenced experiment — simplified structure, then rewards rebalancing, then personalized surfaces — measuring retention impact at each step.",
+      technical:
+        "Loyalty engine changes, eligibility and rewards rules, personalization on the loyalty surface, and instrumentation across the booking funnel.",
+      tradeoffs: [
+        "Generosity of rewards vs. program economics.",
+        "Simplicity vs. power-user expressiveness.",
+        "Personalization depth vs. predictability for users.",
+      ],
+      collaboration:
+        "Design, engineering, finance, marketing, CRM and analytics.",
+      metrics: [
+        { label: "Retention", value: "+15%" },
+        { label: "Repeat bookings", value: "Lifted" },
+        { label: "Program comprehension", value: "Improved" },
+      ],
+      thinking:
+        "Loyalty isn't a points table — it's a promise. Customers re-engage when the next reward feels reachable and the next trip feels easier.",
+      outcome:
+        "A simpler, more personal loyalty experience that lifted retention and gave the business a clearer lever for growth across high-value travelers.",
+      flow: ["Browse", "Book", "Reward", "Re-engage", "Lifetime value"],
+    },
+  },
+  {
     slug: "global-commerce-eu",
     title: "International Expansion: Checkout Modernization & EU Fulfillment",
     company: "Victoria's Secret",
@@ -253,56 +303,6 @@ export const projects: Project[] = [
         },
         convergence: "Better International Customer Experience",
       },
-    },
-  },
-  {
-    slug: "loyalty-revamp",
-    title: "Loyalty Program Revamp",
-    company: "MakeMyTrip",
-    tag: "Growth & Retention",
-    summary:
-      "Redesigned the loyalty experience to simplify engagement and improve retention for high-value travelers.",
-    highlights: [
-      "Simplified 3 tiers → 2 tiers",
-      "Travel rewards ecosystem",
-      "Personalized customer journeys",
-    ],
-    impact: "15% increase in retention",
-    accent: "amber",
-    detail: {
-      problem:
-        "The loyalty program had grown complex — three tiers, overlapping benefits, unclear earn-and-burn mechanics. Engagement was concentrated in a small base and the rest of the program felt invisible.",
-      why: "In a high-frequency, low-margin travel business, retention compounds. Even small lifts in repeat behavior change the unit economics of acquisition.",
-      strategy:
-        "Simplify the structure, sharpen the rewards that actually drive repeat travel, and personalize the journey so each user sees the next valuable step.",
-      role:
-        "PM for the revamp — owned the simplification thesis, the rewards economics with finance, and the experience redesign with design and engineering.",
-      decisions: [
-        "Collapse three tiers into two with clearer thresholds.",
-        "Shift rewards toward the highest-frequency travel actions.",
-        "Personalize the loyalty surface based on the user's travel pattern.",
-      ],
-      execution:
-        "Ran the redesign as a sequenced experiment — simplified structure, then rewards rebalancing, then personalized surfaces — measuring retention impact at each step.",
-      technical:
-        "Loyalty engine changes, eligibility and rewards rules, personalization on the loyalty surface, and instrumentation across the booking funnel.",
-      tradeoffs: [
-        "Generosity of rewards vs. program economics.",
-        "Simplicity vs. power-user expressiveness.",
-        "Personalization depth vs. predictability for users.",
-      ],
-      collaboration:
-        "Design, engineering, finance, marketing, CRM and analytics.",
-      metrics: [
-        { label: "Retention", value: "+15%" },
-        { label: "Repeat bookings", value: "Lifted" },
-        { label: "Program comprehension", value: "Improved" },
-      ],
-      thinking:
-        "Loyalty isn't a points table — it's a promise. Customers re-engage when the next reward feels reachable and the next trip feels easier.",
-      outcome:
-        "A simpler, more personal loyalty experience that lifted retention and gave the business a clearer lever for growth across high-value travelers.",
-      flow: ["Browse", "Book", "Reward", "Re-engage", "Lifetime value"],
     },
   },
 ];
