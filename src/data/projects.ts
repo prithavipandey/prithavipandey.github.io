@@ -26,6 +26,14 @@ export type Project = {
       right: TrackBlock;
       convergence: string;
     };
+    experiences?: {
+      label: string;
+      title: string;
+      image: string;
+      alt: string;
+      copy: string;
+    }[];
+    impactCards?: { value: string; label: string }[];
   };
 };
 
@@ -176,48 +184,78 @@ export const projects: Project[] = [
     company: "MakeMyTrip",
     tag: "Growth & Retention",
     summary:
-      "Redesigned the loyalty experience to simplify engagement and improve retention for high-value travelers.",
+      "Redesigned MakeMyTrip's loyalty program to improve retention, strengthen user quality, simplify rewards, and create stronger repeat-booking behavior.",
     highlights: [
+      "Hybrid eligibility (GMV + frequency)",
       "Simplified 3 tiers → 2 tiers",
-      "Travel rewards ecosystem",
-      "Personalized customer journeys",
+      "Lifecycle engagement & activation",
     ],
-    impact: "15% increase in retention",
+    impact: "+15% retention improvement",
     accent: "amber",
     detail: {
       problem:
-        "The loyalty program had grown complex — three tiers, overlapping benefits, unclear earn-and-burn mechanics. Engagement was concentrated in a small base and the rest of the program felt invisible.",
-      why: "In a high-frequency, low-margin travel business, retention compounds. Even small lifts in repeat behavior change the unit economics of acquisition.",
+        "The loyalty program already influenced ~44% of overall GMV, making it one of MakeMyTrip's most important growth levers. But three fundamental issues limited its impact. First, eligibility relied heavily on GMV, allowing users with high one-time spend but low long-term value to qualify for benefits. Second, cashback was credited only after trip completion, creating a weak reward loop with limited ability to drive repeat behavior. Third, post-activation engagement remained low because users often lacked awareness of their benefits, qualification status, and reward utilization opportunities. The opportunity was not simply to expand participation, but to create a program that rewarded genuine customer behavior while improving retention and program economics.",
+      why: "Retention compounds in travel. Small improvements in repeat booking behavior can significantly increase customer lifetime value and improve acquisition efficiency. Given loyalty's contribution to overall GMV, improving the quality, engagement, and retention of loyalty users represented one of the highest-leverage opportunities for sustainable growth.",
       strategy:
-        "Simplify the structure, sharpen the rewards that actually drive repeat travel, and personalize the journey so each user sees the next valuable step.",
+        "The strategy focused on three priorities: (1) Improve user quality by moving beyond spend-only qualification and incorporating behavioral signals; (2) Strengthen reward economics with incentives that encourage repeat behavior while maintaining sustainable unit economics; and (3) Increase engagement by improving benefit visibility and lifecycle communication throughout the customer journey. The objective was to shift loyalty from a transaction-driven program into a behavior-driven retention engine.",
       role:
-        "PM for the revamp — owned the simplification thesis, the rewards economics with finance, and the experience redesign with design and engineering.",
+        "Led product management for the loyalty revamp end-to-end. Worked closely with engineering, design, CRM, analytics, finance, and business stakeholders to redesign eligibility rules, reward mechanics, member experiences, and engagement strategies. Responsibilities spanned product strategy, roadmap prioritization, loyalty economics design, user journey redesign, experimentation and rollout, and success measurement.",
       decisions: [
-        "Collapse three tiers into two with clearer thresholds.",
-        "Shift rewards toward the highest-frequency travel actions.",
-        "Personalize the loyalty surface based on the user's travel pattern.",
+        "Hybrid Eligibility Model — introduced transaction frequency requirements alongside GMV thresholds so members had to demonstrate repeat intent before qualifying.",
+        "Tier Simplification — consolidated three tiers into two clearer tiers to reduce program complexity and improve comprehension.",
+        "Instant Cashback Model — shifted cashback toward faster reward realization while maintaining controls around usage and economics.",
+        "Controlled Incentive Design — introduced benefit caps, cashback controls, expiry mechanisms, and misuse prevention measures.",
+        "Lifecycle Engagement — built activation, engagement, and retention nudges across the entire member journey.",
       ],
       execution:
-        "Ran the redesign as a sequenced experiment — simplified structure, then rewards rebalancing, then personalized surfaces — measuring retention impact at each step.",
+        "The initiative was delivered through coordinated workstreams. Eligibility criteria were redesigned first to improve member quality. Reward mechanics were then optimized to strengthen habit formation and repeat behavior. Finally, member engagement experiences were redesigned through lifecycle communication and contextual benefit discovery. Each phase was measured independently to understand impact on retention, engagement, and program performance.",
       technical:
-        "Loyalty engine changes, eligibility and rewards rules, personalization on the loyalty surface, and instrumentation across the booking funnel.",
+        "",
       tradeoffs: [
-        "Generosity of rewards vs. program economics.",
-        "Simplicity vs. power-user expressiveness.",
-        "Personalization depth vs. predictability for users.",
+        "User growth vs. user quality — increasing membership size is valuable only when users demonstrate repeat intent and long-term value.",
+        "Reward generosity vs. program economics — benefits needed to remain attractive while preserving sustainable margins.",
+        "Simplicity vs. flexibility — the program had to be easy to understand while supporting differentiated customer experiences.",
+        "Incentives vs. habit formation — the objective was to encourage long-term behavior, not short-term reward chasing.",
       ],
       collaboration:
-        "Design, engineering, finance, marketing, CRM and analytics.",
+        "Partnered with engineering, design, revenue, analytics, marketing, and business leadership to align loyalty strategy, economics, implementation, and measurement.",
       metrics: [
-        { label: "Retention", value: "+15%" },
-        { label: "Repeat bookings", value: "Lifted" },
-        { label: "Program comprehension", value: "Improved" },
+        { label: "Retention Improvement", value: "+15%" },
+        { label: "Trip Attach Rate", value: "+10%" },
+        { label: "Tier Simplification", value: "3 → 2" },
+        { label: "Hybrid Eligibility", value: "GMV + Frequency" },
       ],
-      thinking:
-        "Loyalty isn't a points table — it's a promise. Customers re-engage when the next reward feels reachable and the next trip feels easier.",
+      impactCards: [
+        { value: "+15%", label: "Retention Improvement" },
+        { value: "+10%", label: "Increase in Trip Attach Rate" },
+        { value: "Higher", label: "Member Engagement" },
+      ],
       outcome:
-        "A simpler, more personal loyalty experience that lifted retention and gave the business a clearer lever for growth across high-value travelers.",
-      flow: ["Browse", "Book", "Reward", "Re-engage", "Lifetime value"],
+        "The loyalty revamp transformed the program from a transaction-oriented rewards system into a stronger retention and engagement engine. By improving member quality, simplifying program design, strengthening reward mechanics, and increasing benefit awareness, the initiative delivered measurable retention gains while creating a more sustainable foundation for long-term customer value.",
+      flow: [],
+      experiences: [
+        {
+          label: "Tier Simplification & Eligibility",
+          title: "Tier Simplification & Eligibility Redesign",
+          image: "__LOYALTY_TIERS__",
+          alt: "MMTBLACK Gold and Platinum tier eligibility with 4-trip thresholds",
+          copy: "Introduced a hybrid qualification model that combined transaction frequency and spend requirements. The redesign improved user quality, reduced misuse, and simplified understanding by consolidating the program from three tiers to two.",
+        },
+        {
+          label: "Benefits & Rewards",
+          title: "Benefits & Rewards Experience",
+          image: "__LOYALTY_UPGRADE__",
+          alt: "MMTBLACK Platinum hotel benefits including extra discounts, room upgrades, and credits",
+          copy: "Simplified benefit communication and made value more visible to members — increasing awareness, utilization, and engagement across the loyalty journey.",
+        },
+        {
+          label: "Upgrade & Activation",
+          title: "Upgrade & Activation Journey",
+          image: "__LOYALTY_ACTIVATION__",
+          alt: "MMTBLACK Platinum member welcome screen showing tier validity and unlocked benefits",
+          copy: "Redesigned activation experiences to clearly communicate eligibility, status progression, and unlocked benefits — improving member engagement immediately after qualification.",
+        },
+      ],
     },
   },
   {
