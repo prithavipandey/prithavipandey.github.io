@@ -39,6 +39,11 @@ import {
 } from "lucide-react";
 import { SiteNav } from "@/components/site-nav";
 import { projects } from "@/data/projects";
+import tiktokShopMock from "@/assets/tiktok-shop-mock.jpg";
+import llmShoppingMock from "@/assets/llm-shopping-mock.jpg";
+import loyaltyTiers from "@/assets/loyalty-tiers.jpg.asset.json";
+import loyaltyUpgrade from "@/assets/loyalty-upgrade.jpg.asset.json";
+import loyaltyActivation from "@/assets/loyalty-activation.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -387,29 +392,22 @@ function PimVisual({ tint }: { tint: string }) {
   );
 }
 
-function TikTokVisual({ tint }: { tint: string }) {
+function ScreenshotStrip({ images }: { images: { src: string; alt: string }[] }) {
   return (
-    <div className="w-full self-center grid grid-cols-2 gap-2.5">
-      <div className="rounded-xl border border-white/15 bg-white/[0.05] p-2.5 space-y-1.5 backdrop-blur">
-        <div className="flex items-center justify-between">
-          <div className="text-[9px] uppercase tracking-wider text-white/60">TikTok Shop</div>
-          <span className="text-[8px] px-1.5 py-0.5 rounded-full bg-white/10 text-white/80">Live</span>
+    <div className="w-full h-full self-stretch grid gap-2" style={{ gridTemplateColumns: `repeat(${images.length}, minmax(0, 1fr))` }}>
+      {images.map((img) => (
+        <div
+          key={img.src}
+          className="rounded-xl overflow-hidden border border-white/15 bg-white/[0.04] backdrop-blur flex items-center justify-center"
+        >
+          <img
+            src={img.src}
+            alt={img.alt}
+            loading="lazy"
+            className="w-full h-full object-cover object-top"
+          />
         </div>
-        <VNode icon={Sparkle} label="Curated Discovery" />
-        <VNode icon={ShoppingBag} label="Native Checkout" emphasis tint={tint} />
-        <VNode icon={TrendingUp} label="Acquisition" />
-      </div>
-      <div className="rounded-xl border border-white/15 bg-white/[0.05] p-2.5 space-y-1.5 backdrop-blur">
-        <div className="flex items-center justify-between">
-          <div className="text-[9px] uppercase tracking-wider text-white/60">Conversational</div>
-          <span className="text-[8px] px-1.5 py-0.5 rounded-full bg-white/10 text-white/80">LLM</span>
-        </div>
-        <div className="rounded-md border border-white/15 bg-white/[0.06] px-2 py-1.5 text-[10px] text-white/85 italic leading-snug">
-          "travel-friendly bras under $50"
-        </div>
-        <VNode icon={MessageSquare} label="Intent → Attrs" emphasis tint={tint} />
-        <VNode icon={Layers} label="Grounded Recs" />
-      </div>
+      ))}
     </div>
   );
 }
@@ -432,28 +430,7 @@ function GlobalVisual({ tint }: { tint: string }) {
   );
 }
 
-function LoyaltyVisual({ tint }: { tint: string }) {
-  return (
-    <div className="w-full self-center space-y-2">
-      <div className="rounded-xl border border-white/15 bg-white/[0.05] p-2.5 backdrop-blur">
-        <div className="text-[9px] uppercase tracking-wider text-white/60 mb-1.5">Rewards Ecosystem</div>
-        <div className="grid grid-cols-4 gap-1.5">
-          <VNode icon={Gift} label="Cashback" />
-          <VNode icon={Plane} label="Flights" />
-          <VNode icon={Hotel} label="Hotels" />
-          <VNode icon={Compass} label="Cabs" />
-        </div>
-      </div>
-      <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-1.5">
-        <VNode icon={Users} label="Book" emphasis tint={tint} />
-        <span className="text-white/40 text-xs text-center">→</span>
-        <VNode icon={Gift} label="Reward" emphasis tint={tint} />
-        <span className="text-white/40 text-xs text-center">→</span>
-        <VNode icon={RotateCcw} label="Retain" emphasis tint={tint} />
-      </div>
-    </div>
-  );
-}
+
 
 function ProjectVisual({ slug, accent }: { slug: string; accent: string }) {
   const a = accentMap[accent];
@@ -464,9 +441,24 @@ function ProjectVisual({ slug, accent }: { slug: string; accent: string }) {
       <div className="absolute inset-0 noise opacity-60" />
       <div className="absolute inset-0 p-5 md:p-6 flex">
         {slug === "ai-pim-platform" && <PimVisual tint={a.tint} />}
-        {slug === "emerging-commerce-tiktok-llm" && <TikTokVisual tint={a.tint} />}
+        {slug === "emerging-commerce-tiktok-llm" && (
+          <ScreenshotStrip
+            images={[
+              { src: tiktokShopMock, alt: "TikTok Shop storefront mock" },
+              { src: llmShoppingMock, alt: "Conversational LLM shopping mock" },
+            ]}
+          />
+        )}
         {slug === "global-commerce-eu" && <GlobalVisual tint={a.tint} />}
-        {slug === "loyalty-revamp" && <LoyaltyVisual tint={a.tint} />}
+        {slug === "loyalty-revamp" && (
+          <ScreenshotStrip
+            images={[
+              { src: loyaltyTiers.url, alt: "Loyalty tier redesign" },
+              { src: loyaltyUpgrade.url, alt: "Loyalty benefits and rewards" },
+              { src: loyaltyActivation.url, alt: "Loyalty activation journey" },
+            ]}
+          />
+        )}
       </div>
       <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
     </div>
