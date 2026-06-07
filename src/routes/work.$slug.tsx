@@ -17,6 +17,15 @@ import { SiteNav } from "@/components/site-nav";
 import { getProject, projects, type Project, type TrackBlock } from "@/data/projects";
 import tiktokShopMock from "@/assets/tiktok-shop-mock.jpg";
 import llmShoppingMock from "@/assets/llm-shopping-mock.jpg";
+import loyaltyTiers from "@/assets/loyalty-tiers.jpg.asset.json";
+import loyaltyUpgrade from "@/assets/loyalty-upgrade.jpg.asset.json";
+import loyaltyActivation from "@/assets/loyalty-activation.jpg.asset.json";
+
+const imageMap: Record<string, string> = {
+  __LOYALTY_TIERS__: loyaltyTiers.url,
+  __LOYALTY_UPGRADE__: loyaltyUpgrade.url,
+  __LOYALTY_ACTIVATION__: loyaltyActivation.url,
+};
 
 export const Route = createFileRoute("/work/$slug")({
   head: ({ params }) => {
@@ -80,6 +89,7 @@ function ExperienceCard({
   alt,
   copy,
   aspect,
+  fit = "cover",
 }: {
   label: string;
   title: string;
@@ -87,6 +97,7 @@ function ExperienceCard({
   alt: string;
   copy: string;
   aspect: string;
+  fit?: "cover" | "contain";
 }) {
   return (
     <motion.div
@@ -96,12 +107,12 @@ function ExperienceCard({
       transition={{ duration: 0.5 }}
       className="group relative rounded-2xl overflow-hidden bg-card/60 border border-foreground/10 hover:border-electric/30 transition"
     >
-      <div className={`${aspect} w-full overflow-hidden bg-foreground/5`}>
+      <div className={`${aspect} w-full overflow-hidden bg-gradient-to-b from-foreground/[0.04] to-foreground/[0.02] grid place-items-center`}>
         <img
           src={image}
           alt={alt}
           loading="lazy"
-          className="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500"
+          className={`w-full h-full ${fit === "contain" ? "object-contain p-4" : "object-cover"} group-hover:scale-[1.02] transition duration-500`}
         />
       </div>
       <div className="p-5 md:p-6">
@@ -121,6 +132,9 @@ function CaseStudy() {
   const restMetrics = p.detail.metrics.slice(1);
   const tracks = p.detail.tracks;
   const isEmerging = p.slug === "emerging-commerce-tiktok-llm";
+  const experiences = p.detail.experiences;
+  const impactCards = p.detail.impactCards;
+  const isLoyalty = p.slug === "loyalty-revamp";
 
   return (
     <div className="min-h-screen dark relative">
@@ -193,7 +207,7 @@ function CaseStudy() {
             </section>
           ) : tracks ? (
             <DualTrackVisual tracks={tracks} />
-          ) : (
+          ) : isLoyalty ? null : (
             <ArchitectureFlow steps={p.detail.flow} />
           )}
 
@@ -237,7 +251,30 @@ function CaseStudy() {
               </div>
             </Block>
           )}
-          <Block label="Technical Complexity">{p.detail.technical}</Block>
+          {experiences && experiences.length > 0 && (
+            <Block label="Product Experience">
+              <p className="text-sm text-muted-foreground -mt-1">
+                Real member-facing experiences from the redesigned loyalty program.
+              </p>
+              <div className="grid md:grid-cols-3 gap-5 pt-2">
+                {experiences.map((e) => (
+                  <ExperienceCard
+                    key={e.title}
+                    label={e.label}
+                    title={e.title}
+                    image={imageMap[e.image] ?? e.image}
+                    alt={e.alt}
+                    copy={e.copy}
+                    aspect="aspect-[3/4]"
+                    fit="contain"
+                  />
+                ))}
+              </div>
+            </Block>
+          )}
+          {p.detail.technical && (
+            <Block label="Technical Complexity">{p.detail.technical}</Block>
+          )}
           <Block label="Tradeoffs & Challenges">
             <ul className="space-y-3">
               {p.detail.tradeoffs.map((d) => (
@@ -256,7 +293,7 @@ function CaseStudy() {
           ) : !tracks ? (
             <Block label="Impact">
               <div className="grid sm:grid-cols-2 gap-3">
-                {p.detail.metrics.map((m) => (
+                {(impactCards ?? p.detail.metrics).map((m) => (
                   <div key={m.label} className="rounded-xl p-4 bg-card/60 border border-foreground/10">
                     <div className="text-xl font-semibold tracking-tight text-gradient leading-none pb-1">{m.value}</div>
                     <div className="text-xs text-muted-foreground mt-2">{m.label}</div>
@@ -265,7 +302,7 @@ function CaseStudy() {
               </div>
             </Block>
           ) : null}
-          {p.detail.thinking && !tracks && (
+          {p.detail.thinking && !tracks && !isLoyalty && (
             <Block label="Product Thinking">
               <p className="text-xl md:text-2xl font-medium text-gradient leading-snug">
                 "{p.detail.thinking}"
