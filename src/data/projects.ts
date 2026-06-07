@@ -26,6 +26,14 @@ export type Project = {
       right: TrackBlock;
       convergence: string;
     };
+    experiences?: {
+      label: string;
+      title: string;
+      image: string;
+      alt: string;
+      copy: string;
+    }[];
+    impactCards?: { value: string; label: string }[];
   };
 };
 
