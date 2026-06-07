@@ -147,7 +147,7 @@ function Hero() {
           transition={{ duration: 0.9, delay: 0.05, ease: "easeOut" }}
           className="mt-6 text-5xl md:text-7xl lg:text-[5.5rem] font-semibold tracking-[-0.03em] leading-[1.02] text-gradient max-w-5xl"
         >
-          Hi, I'm Prithvi — Product leader & builder
+          Hi, I'm Prithvi — Product Leader & Builder
         </motion.h1>
 
         <motion.p
@@ -544,7 +544,7 @@ function Timeline() {
     { c: "Victoria's Secret", r: "Senior Product Manager", d: "Apr 2025 — Present", icon: Briefcase, highlight: false },
     { c: "Victoria's Secret", r: "Product Manager", d: "Jul 2023 — Mar 2025", icon: Briefcase },
     { c: "MakeMyTrip", r: "Associate Product Manager — Growth", d: "Apr 2021 — Jul 2023", icon: Briefcase },
-    { c: "64 Squares", r: "Data Scientist", d: "Aug 2018 — Mar 2021", icon: Briefcase },
+    { c: "64squares", r: "Data Scientist", d: "Aug 2018 — Mar 2021", icon: Briefcase },
     { c: "Capgemini", r: "Associate Consultant", d: "Aug 2017 — Jul 2018", icon: Briefcase },
     { c: "IIT Roorkee", r: "B.Tech, Metallurgical & Materials Engineering", d: "2013 — 2017", icon: GraduationCap },
   ];

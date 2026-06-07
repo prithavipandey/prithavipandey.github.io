@@ -228,7 +228,6 @@ export const projects: Project[] = [
       impactCards: [
         { value: "+15%", label: "Retention Improvement" },
         { value: "+10%", label: "Increase in Trip Attach Rate" },
-        { value: "Higher", label: "Member Engagement" },
       ],
       outcome:
         "The loyalty revamp transformed the program from a transaction-oriented rewards system into a stronger retention and engagement engine. By improving member quality, simplifying program design, strengthening reward mechanics, and increasing benefit awareness, the initiative delivered measurable retention gains while creating a more sustainable foundation for long-term customer value.",
