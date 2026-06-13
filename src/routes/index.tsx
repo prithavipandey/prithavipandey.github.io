@@ -44,6 +44,7 @@ import llmShoppingMock from "@/assets/llm-shopping-mock.jpg";
 import loyaltyTiers from "@/assets/loyalty-tiers.jpg.asset.json";
 import loyaltyUpgrade from "@/assets/loyalty-upgrade.jpg.asset.json";
 import loyaltyActivation from "@/assets/loyalty-activation.jpg.asset.json";
+import pimArchitecture from "@/assets/pim-architecture.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
