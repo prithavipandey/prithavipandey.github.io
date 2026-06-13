@@ -370,25 +370,15 @@ function VNode({
 
 function PimVisual({ tint }: { tint: string }) {
   return (
-    <div className="w-full self-center grid grid-cols-[1fr_auto_1.15fr_auto_1fr] items-center gap-1.5">
-      <div className="space-y-1.5">
-        <VNode icon={Database} label="Vendor Feeds" sub="upstream" />
-        <VNode icon={Layers} label="Legacy ERP" sub="upstream" />
-        <VNode icon={BarChart3} label="Spreadsheets" sub="upstream" />
-      </div>
-      <span className="text-white/40 text-xs">→</span>
-      <div className="rounded-xl border border-white/20 bg-white/[0.08] p-2 space-y-1.5 backdrop-blur">
-        <div className="text-[8px] uppercase tracking-wider text-white/60 px-0.5">PIM Core</div>
-        <VNode icon={Layers} label="Schema" emphasis tint={tint} />
-        <VNode icon={Wand2} label="LLM Enrich" emphasis tint={tint} />
-        <VNode icon={Users} label="Salesforce" emphasis tint={tint} />
-      </div>
-      <span className="text-white/40 text-xs">→</span>
-      <div className="space-y-1.5">
-        <VNode icon={Sparkle} label="Site Search" sub="downstream" />
-        <VNode icon={ShoppingBag} label="Merchandising" sub="downstream" />
-        <VNode icon={TrendingUp} label="Marketing" sub="downstream" />
-      </div>
+  void tint;
+  return (
+    <div className="w-full h-full self-stretch rounded-xl overflow-hidden border border-white/15 bg-white flex items-center justify-center">
+      <img
+        src={pimArchitecture.url}
+        alt="PIM end-to-end data flow"
+        loading="lazy"
+        className="w-full h-full object-contain p-2"
+      />
     </div>
   );
 }
