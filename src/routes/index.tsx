@@ -26,7 +26,6 @@ import {
   Medal,
   BadgeCheck,
   Star,
-  MessageSquare,
   CreditCard,
   Truck,
   Plane,
