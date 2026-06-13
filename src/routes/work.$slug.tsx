@@ -423,6 +423,30 @@ function ArchitectureFlow({ steps }: { steps: string[] }) {
   );
 }
 
+function PimArchitectureImage() {
+  return (
+    <div className="relative rounded-3xl p-6 md:p-8 bg-gradient-to-br from-card/70 via-card/40 to-card/20 border border-foreground/10 shadow-card overflow-hidden">
+      <div className="absolute inset-0 grid-bg opacity-[0.10] pointer-events-none" />
+      <div className="relative flex items-center justify-between mb-6">
+        <div>
+          <div className="text-[10px] uppercase tracking-[0.22em] text-electric/90">Platform Architecture</div>
+          <div className="mt-1 text-base md:text-lg font-medium text-foreground/90">
+            End-to-end product data flow
+          </div>
+        </div>
+      </div>
+      <div className="relative rounded-2xl overflow-hidden border border-foreground/10 bg-white">
+        <img
+          src={pimArchitecture.url}
+          alt="PIM end-to-end data flow: upstream sources, Vertex AI enrichment, Salesforce PIM ecosystem, and downstream consumers"
+          loading="lazy"
+          className="w-full h-auto object-contain"
+        />
+      </div>
+    </div>
+  );
+}
+
 function trackIcon(label: string) {
   if (/checkout/i.test(label)) return CreditCard;
   if (/fulfillment|eu/i.test(label)) return Truck;
