@@ -136,6 +136,7 @@ function CaseStudy() {
   const experiences = p.detail.experiences;
   const impactCards = p.detail.impactCards;
   const isLoyalty = p.slug === "loyalty-revamp";
+  const isPim = p.slug === "ai-pim-platform";
 
   return (
     <div className="min-h-screen dark relative">
@@ -216,7 +217,9 @@ function CaseStudy() {
             </section>
           ) : tracks ? (
             <DualTrackVisual tracks={tracks} />
-          ) : isLoyalty ? null : (
+          ) : isLoyalty ? null : isPim ? (
+            <PimArchitectureImage />
+          ) : (
             <ArchitectureFlow steps={p.detail.flow} />
           )}
 
