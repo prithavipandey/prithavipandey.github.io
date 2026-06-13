@@ -26,7 +26,6 @@ import {
   Medal,
   BadgeCheck,
   Star,
-  Database,
   Sparkle,
   MessageSquare,
   CreditCard,
@@ -35,7 +34,6 @@ import {
   Hotel,
   Gift,
   RotateCcw,
-  Wand2,
 } from "lucide-react";
 import { SiteNav } from "@/components/site-nav";
 import { projects } from "@/data/projects";
