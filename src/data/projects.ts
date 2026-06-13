@@ -7,6 +7,7 @@ export type Project = {
   highlights: string[];
   impact: string;
   accent: "blue" | "violet" | "cyan" | "amber";
+  tags?: string[];
   detail: {
     problem: string;
     why: string;
@@ -60,6 +61,7 @@ export const projects: Project[] = [
     ],
     impact: "~$4M annual business uplift",
     accent: "blue",
+    tags: ["Platform Modernization", "LLM Enrichment", "0→1 Build"],
     detail: {
       problem:
         "Product information existed across multiple fragmented systems, creating inconsistent product data, heavy manual effort, and slower operational workflows. Teams relied on disconnected upstream feeds, spreadsheets, and manual interventions, which impacted product quality, discoverability, and speed to market. As the catalog scaled globally, maintaining consistent and enriched product information across downstream systems became increasingly difficult.",

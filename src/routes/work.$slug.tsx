@@ -20,6 +20,7 @@ import llmShoppingMock from "@/assets/llm-shopping-mock.jpg";
 import loyaltyTiers from "@/assets/loyalty-tiers.jpg.asset.json";
 import loyaltyUpgrade from "@/assets/loyalty-upgrade.jpg.asset.json";
 import loyaltyActivation from "@/assets/loyalty-activation.jpg.asset.json";
+import pimArchitecture from "@/assets/pim-architecture.png.asset.json";
 
 const imageMap: Record<string, string> = {
   __LOYALTY_TIERS__: loyaltyTiers.url,
@@ -135,6 +136,7 @@ function CaseStudy() {
   const experiences = p.detail.experiences;
   const impactCards = p.detail.impactCards;
   const isLoyalty = p.slug === "loyalty-revamp";
+  const isPim = p.slug === "ai-pim-platform";
 
   return (
     <div className="min-h-screen dark relative">
@@ -153,6 +155,14 @@ function CaseStudy() {
               <span className="px-3 py-1 rounded-full bg-gradient-accent/15 text-electric border border-electric/30">
                 {p.tag}
               </span>
+              {p.tags?.map((t) => (
+                <span
+                  key={t}
+                  className="px-3 py-1 rounded-full bg-foreground/5 border border-foreground/15 text-foreground/75"
+                >
+                  {t}
+                </span>
+              ))}
             </div>
             <h1 className="mt-6 text-4xl md:text-5xl lg:text-[3.75rem] font-semibold tracking-[-0.02em] leading-[1.15] text-gradient pb-2 [overflow-wrap:anywhere]">
               {p.title}
@@ -207,7 +217,9 @@ function CaseStudy() {
             </section>
           ) : tracks ? (
             <DualTrackVisual tracks={tracks} />
-          ) : isLoyalty ? null : (
+          ) : isLoyalty ? null : isPim ? (
+            <PimArchitectureImage />
+          ) : (
             <ArchitectureFlow steps={p.detail.flow} />
           )}
 
@@ -406,6 +418,30 @@ function ArchitectureFlow({ steps }: { steps: string[] }) {
             </div>
           );
         })}
+      </div>
+    </div>
+  );
+}
+
+function PimArchitectureImage() {
+  return (
+    <div className="relative rounded-3xl p-6 md:p-8 bg-gradient-to-br from-card/70 via-card/40 to-card/20 border border-foreground/10 shadow-card overflow-hidden">
+      <div className="absolute inset-0 grid-bg opacity-[0.10] pointer-events-none" />
+      <div className="relative flex items-center justify-between mb-6">
+        <div>
+          <div className="text-[10px] uppercase tracking-[0.22em] text-electric/90">Platform Architecture</div>
+          <div className="mt-1 text-base md:text-lg font-medium text-foreground/90">
+            End-to-end product data flow
+          </div>
+        </div>
+      </div>
+      <div className="relative rounded-2xl overflow-hidden border border-foreground/10 bg-white">
+        <img
+          src={pimArchitecture.url}
+          alt="PIM end-to-end data flow: upstream sources, Vertex AI enrichment, Salesforce PIM ecosystem, and downstream consumers"
+          loading="lazy"
+          className="w-full h-auto object-contain"
+        />
       </div>
     </div>
   );

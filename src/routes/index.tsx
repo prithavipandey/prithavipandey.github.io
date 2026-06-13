@@ -26,16 +26,12 @@ import {
   Medal,
   BadgeCheck,
   Star,
-  Database,
-  Sparkle,
-  MessageSquare,
   CreditCard,
   Truck,
   Plane,
   Hotel,
   Gift,
   RotateCcw,
-  Wand2,
 } from "lucide-react";
 import { SiteNav } from "@/components/site-nav";
 import { projects } from "@/data/projects";
@@ -44,6 +40,7 @@ import llmShoppingMock from "@/assets/llm-shopping-mock.jpg";
 import loyaltyTiers from "@/assets/loyalty-tiers.jpg.asset.json";
 import loyaltyUpgrade from "@/assets/loyalty-upgrade.jpg.asset.json";
 import loyaltyActivation from "@/assets/loyalty-activation.jpg.asset.json";
+import pimArchitecture from "@/assets/pim-architecture.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -368,26 +365,15 @@ function VNode({
 }
 
 function PimVisual({ tint }: { tint: string }) {
+  void tint;
   return (
-    <div className="w-full self-center grid grid-cols-[1fr_auto_1.15fr_auto_1fr] items-center gap-1.5">
-      <div className="space-y-1.5">
-        <VNode icon={Database} label="Vendor Feeds" sub="upstream" />
-        <VNode icon={Layers} label="Legacy ERP" sub="upstream" />
-        <VNode icon={BarChart3} label="Spreadsheets" sub="upstream" />
-      </div>
-      <span className="text-white/40 text-xs">→</span>
-      <div className="rounded-xl border border-white/20 bg-white/[0.08] p-2 space-y-1.5 backdrop-blur">
-        <div className="text-[8px] uppercase tracking-wider text-white/60 px-0.5">PIM Core</div>
-        <VNode icon={Layers} label="Schema" emphasis tint={tint} />
-        <VNode icon={Wand2} label="LLM Enrich" emphasis tint={tint} />
-        <VNode icon={Users} label="Salesforce" emphasis tint={tint} />
-      </div>
-      <span className="text-white/40 text-xs">→</span>
-      <div className="space-y-1.5">
-        <VNode icon={Sparkle} label="Site Search" sub="downstream" />
-        <VNode icon={ShoppingBag} label="Merchandising" sub="downstream" />
-        <VNode icon={TrendingUp} label="Marketing" sub="downstream" />
-      </div>
+    <div className="w-full h-full self-stretch rounded-xl overflow-hidden border border-white/15 bg-white flex items-center justify-center">
+      <img
+        src={pimArchitecture.url}
+        alt="PIM end-to-end data flow"
+        loading="lazy"
+        className="w-full h-full object-contain p-2"
+      />
     </div>
   );
 }
@@ -492,6 +478,14 @@ function Work() {
                 <span className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-gradient-accent/15 text-electric border border-electric/25">
                   {p.tag}
                 </span>
+                {p.tags?.map((t) => (
+                  <span
+                    key={t}
+                    className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-foreground/5 border border-foreground/15 text-foreground/75"
+                  >
+                    {t}
+                  </span>
+                ))}
               </div>
 
               <h3 className="mt-4 text-2xl md:text-[1.7rem] font-semibold tracking-tight leading-[1.15] text-foreground group-hover:text-gradient transition">
