@@ -584,9 +584,7 @@ function Timeline() {
             transition={{ duration: 0.5, delay: i * 0.05 }}
             className="pl-8 pb-10 last:pb-0 relative"
           >
-            <span className={`absolute -left-[7px] top-1.5 w-3.5 h-3.5 rounded-full border-2 ${
-              it.highlight ? "bg-gradient-accent border-electric shadow-glow" : "bg-background border-border"
-            }`} />
+            <span className="absolute -left-[7px] top-1.5 w-3.5 h-3.5 rounded-full border-2 bg-background border-border" />
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
               <h3 className="text-lg font-semibold">{it.c}</h3>
             </div>
