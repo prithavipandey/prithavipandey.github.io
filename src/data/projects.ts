@@ -61,7 +61,7 @@ export const projects: Project[] = [
     ],
     impact: "~$4M annual business uplift",
     accent: "blue",
-    tags: ["Platform Modernization", "LLM Enrichment", "0→1 Build"],
+    tags: ["LLM Enrichment"],
     detail: {
       problem:
         "Product information existed across multiple fragmented systems, creating inconsistent product data, heavy manual effort, and slower operational workflows. Teams relied on disconnected upstream feeds, spreadsheets, and manual interventions, which impacted product quality, discoverability, and speed to market. As the catalog scaled globally, maintaining consistent and enriched product information across downstream systems became increasingly difficult.",
@@ -121,6 +121,7 @@ export const projects: Project[] = [
     ],
     impact: "New discovery & acquisition channels",
     accent: "violet",
+    tags: ["AI Shopping"],
     detail: {
       problem:
         "Customer discovery behavior was evolving beyond traditional owned channels. Consumers increasingly explored products through social commerce platforms and conversational interfaces, creating new discovery and purchase journeys outside the brand website. Victoria's Secret needed to establish presence across these emerging commerce surfaces while maintaining a consistent product experience and accurate catalog representation. The challenge was enabling new acquisition and discovery channels without creating fragmented commerce systems.",
