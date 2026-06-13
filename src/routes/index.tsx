@@ -482,6 +482,14 @@ function Work() {
                 <span className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-gradient-accent/15 text-electric border border-electric/25">
                   {p.tag}
                 </span>
+                {p.tags?.map((t) => (
+                  <span
+                    key={t}
+                    className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-foreground/5 border border-foreground/15 text-foreground/75"
+                  >
+                    {t}
+                  </span>
+                ))}
               </div>
 
               <h3 className="mt-4 text-2xl md:text-[1.7rem] font-semibold tracking-tight leading-[1.15] text-foreground group-hover:text-gradient transition">

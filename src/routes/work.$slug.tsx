@@ -20,6 +20,7 @@ import llmShoppingMock from "@/assets/llm-shopping-mock.jpg";
 import loyaltyTiers from "@/assets/loyalty-tiers.jpg.asset.json";
 import loyaltyUpgrade from "@/assets/loyalty-upgrade.jpg.asset.json";
 import loyaltyActivation from "@/assets/loyalty-activation.jpg.asset.json";
+import pimArchitecture from "@/assets/pim-architecture.png.asset.json";
 
 const imageMap: Record<string, string> = {
   __LOYALTY_TIERS__: loyaltyTiers.url,
@@ -153,6 +154,14 @@ function CaseStudy() {
               <span className="px-3 py-1 rounded-full bg-gradient-accent/15 text-electric border border-electric/30">
                 {p.tag}
               </span>
+              {p.tags?.map((t) => (
+                <span
+                  key={t}
+                  className="px-3 py-1 rounded-full bg-foreground/5 border border-foreground/15 text-foreground/75"
+                >
+                  {t}
+                </span>
+              ))}
             </div>
             <h1 className="mt-6 text-4xl md:text-5xl lg:text-[3.75rem] font-semibold tracking-[-0.02em] leading-[1.15] text-gradient pb-2 [overflow-wrap:anywhere]">
               {p.title}
