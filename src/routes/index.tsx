@@ -369,7 +369,6 @@ function VNode({
 }
 
 function PimVisual({ tint }: { tint: string }) {
-  return (
   void tint;
   return (
     <div className="w-full h-full self-stretch rounded-xl overflow-hidden border border-white/15 bg-white flex items-center justify-center">
