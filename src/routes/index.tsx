@@ -41,6 +41,7 @@ import loyaltyTiers from "@/assets/loyalty-tiers.jpg.asset.json";
 import loyaltyUpgrade from "@/assets/loyalty-upgrade.jpg.asset.json";
 import loyaltyActivation from "@/assets/loyalty-activation.jpg.asset.json";
 import pimArchitecture from "@/assets/pim-architecture.png.asset.json";
+import intlExpansion from "@/assets/intl-expansion.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -435,7 +436,16 @@ function ProjectVisual({ slug, accent }: { slug: string; accent: string }) {
             ]}
           />
         )}
-        {slug === "global-commerce-eu" && <GlobalVisual tint={a.tint} />}
+        {slug === "global-commerce-eu" && (
+          <div className="w-full h-full self-stretch rounded-xl overflow-hidden border border-white/15 bg-white flex items-center justify-center">
+            <img
+              src={intlExpansion.url}
+              alt="International expansion journey"
+              loading="lazy"
+              className="w-full h-full object-contain p-2"
+            />
+          </div>
+        )}
         {slug === "loyalty-revamp" && (
           <ScreenshotStrip
             images={[
@@ -527,12 +537,40 @@ function Work() {
 
 function Timeline() {
   const items = [
-    { c: "Victoria's Secret", r: "Senior Product Manager", d: "Apr 2025 — Present", icon: Briefcase, highlight: false },
-    { c: "Victoria's Secret", r: "Product Manager", d: "Jul 2023 — Mar 2025", icon: Briefcase },
-    { c: "MakeMyTrip", r: "Associate Product Manager — Growth", d: "Apr 2021 — Jul 2023", icon: Briefcase },
-    { c: "64squares", r: "Data Scientist", d: "Aug 2018 — Mar 2021", icon: Briefcase },
-    { c: "Capgemini", r: "Associate Consultant", d: "Aug 2017 — Jul 2018", icon: Briefcase },
-    { c: "IIT Roorkee", r: "B.Tech, Metallurgical & Materials Engineering", d: "2013 — 2017", icon: GraduationCap },
+    {
+      c: "Victoria's Secret",
+      r: "Senior Product Manager",
+      d: "Jul 2023 — Present",
+      icon: Briefcase,
+      s: "Leading large-scale commerce initiatives spanning product platforms, international expansion, AI-powered experiences, and emerging commerce channels. Focused on building scalable systems that improve customer experience, operational efficiency, and business growth.",
+    },
+    {
+      c: "MakeMyTrip",
+      r: "Associate Product Manager",
+      d: "Apr 2021 — Jul 2023",
+      icon: Briefcase,
+      s: "Owned growth and retention products, designing customer-centric experiences that improved engagement, loyalty, and long-term customer value.",
+    },
+    {
+      c: "64squares",
+      r: "Data Scientist",
+      d: "Aug 2018 — Mar 2021",
+      icon: Briefcase,
+      s: "Built a strong foundation in data science and machine learning, delivering predictive analytics, forecasting, optimization, and automation solutions that improved customer retention, profitability, and operational efficiency across global clients.",
+    },
+    {
+      c: "Capgemini",
+      r: "Associate Consultant",
+      d: "Aug 2017 — Jul 2018",
+      icon: Briefcase,
+      s: "Managed a web-based insurance platform serving Property & Casualty carriers, driving platform enhancements and operational improvements that streamlined transactions, improved user experience, and reduced claim losses by over $100K per quarter.",
+    },
+    {
+      c: "IIT Roorkee",
+      r: "B.Tech, Metallurgical & Materials Engineering",
+      d: "2013 — 2017",
+      icon: GraduationCap,
+    },
   ];
   return (
     <Section eyebrow="Timeline" title="Career Path">
@@ -554,6 +592,11 @@ function Timeline() {
             </div>
             <div className="text-sm text-foreground/80 mt-0.5">{it.r}</div>
             <div className="text-xs text-muted-foreground mt-1 tabular-nums">{it.d}</div>
+            {it.s && (
+              <p className="text-sm text-muted-foreground mt-3 leading-relaxed max-w-3xl">
+                {it.s}
+              </p>
+            )}
           </motion.li>
         ))}
       </ol>
