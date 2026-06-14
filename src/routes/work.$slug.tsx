@@ -76,7 +76,7 @@ function Block({ label, children }: { label: string; children: React.ReactNode }
       className="grid md:grid-cols-[200px_1fr] gap-6 md:gap-12 py-10 border-t border-border/60"
     >
       <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{label}</div>
-      <div className="text-foreground/90 leading-relaxed text-base md:text-[1.05rem] space-y-4">
+      <div className="text-foreground/90 leading-relaxed text-base md:text-[1.05rem] space-y-4 whitespace-pre-line">
         {children}
       </div>
     </motion.section>
