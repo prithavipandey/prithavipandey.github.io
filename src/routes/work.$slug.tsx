@@ -76,7 +76,7 @@ function Block({ label, children }: { label: string; children: React.ReactNode }
       className="grid md:grid-cols-[200px_1fr] gap-6 md:gap-12 py-10 border-t border-border/60"
     >
       <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{label}</div>
-      <div className="text-foreground/90 leading-relaxed text-base md:text-[1.05rem] space-y-4">
+      <div className="text-foreground/90 leading-relaxed text-base md:text-[1.05rem] space-y-4 whitespace-pre-line">
         {children}
       </div>
     </motion.section>
@@ -172,7 +172,7 @@ function CaseStudy() {
             </p>
 
             {/* Premium impact strip — hidden for dual-track projects (e.g. International Expansion) */}
-            {!tracks && (
+            {!tracks && !isPim && (
             <div className="mt-12 grid md:grid-cols-[1.2fr_1fr_1fr_1fr] gap-3">
               <div className="relative overflow-hidden rounded-2xl p-5 md:p-6 border border-electric/30 bg-gradient-to-br from-electric/[0.12] via-card/60 to-transparent shadow-glow">
                 <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-electric/60 to-transparent" />
@@ -287,16 +287,6 @@ function CaseStudy() {
           {p.detail.technical && (
             <Block label="Technical Complexity">{p.detail.technical}</Block>
           )}
-          <Block label="Tradeoffs & Challenges">
-            <ul className="space-y-3">
-              {p.detail.tradeoffs.map((d) => (
-                <li key={d} className="flex items-start gap-3">
-                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-violet shrink-0" />
-                  <span>{d}</span>
-                </li>
-              ))}
-            </ul>
-          </Block>
           <Block label="Cross-Functional Collaboration">{p.detail.collaboration}</Block>
           {tracks && !isEmerging ? (
             <Block label="Initiative Outcomes">
@@ -304,17 +294,41 @@ function CaseStudy() {
             </Block>
           ) : !tracks ? (
             <Block label="Impact">
-              <div className="grid sm:grid-cols-2 gap-3">
+              <div className={`grid sm:grid-cols-2 gap-${isPim ? "4" : "3"}`}>
                 {(impactCards ?? p.detail.metrics).map((m) => (
-                  <div key={m.label} className="rounded-xl p-4 bg-card/60 border border-foreground/10">
-                    <div className="text-xl font-semibold tracking-tight text-gradient leading-none pb-1">{m.value}</div>
-                    <div className="text-xs text-muted-foreground mt-2">{m.label}</div>
+                  <div
+                    key={m.label}
+                    className={`relative rounded-2xl overflow-hidden ${
+                      isPim
+                        ? "p-6 bg-gradient-to-br from-electric/[0.12] via-card/70 to-transparent border border-electric/30 shadow-glow"
+                        : "p-4 bg-card/60 border border-foreground/10"
+                    }`}
+                  >
+                    {isPim && (
+                      <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-electric/60 to-transparent" />
+                    )}
+                    <div
+                      className={`font-semibold tracking-[-0.02em] text-gradient leading-none pb-1 ${
+                        isPim ? "text-4xl md:text-5xl" : "text-xl"
+                      }`}
+                    >
+                      {m.value}
+                    </div>
+                    <div
+                      className={`mt-3 ${
+                        isPim
+                          ? "text-[11px] uppercase tracking-wider text-foreground/75"
+                          : "text-xs text-muted-foreground mt-2"
+                      }`}
+                    >
+                      {m.label}
+                    </div>
                   </div>
                 ))}
               </div>
             </Block>
           ) : null}
-          {p.detail.thinking && !tracks && !isLoyalty && (
+          {p.detail.thinking && (
             <Block label="Product Thinking">
               <p className="text-xl md:text-2xl font-medium text-gradient leading-snug">
                 "{p.detail.thinking}"
@@ -528,10 +542,7 @@ function DualTrackVisual({ tracks }: { tracks: NonNullable<Project["detail"]["tr
 
       <div className="relative flex items-end justify-between mb-6">
         <div>
-          <div className="text-[10px] uppercase tracking-[0.22em] text-electric/90">Dual-Track Program</div>
-          <div className="mt-1 text-base md:text-lg font-medium text-foreground/90">
-            Two parallel workstreams, one international outcome
-          </div>
+          <div className="text-[10px] uppercase tracking-[0.22em] text-electric/90">Global Commerce Expansion</div>
         </div>
       </div>
 

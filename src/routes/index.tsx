@@ -42,6 +42,7 @@ import loyaltyUpgrade from "@/assets/loyalty-upgrade.jpg.asset.json";
 import loyaltyActivation from "@/assets/loyalty-activation.jpg.asset.json";
 import pimArchitecture from "@/assets/pim-architecture.png.asset.json";
 import intlExpansion from "@/assets/intl-expansion.png.asset.json";
+import profileAsset from "@/assets/profile.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -131,6 +132,21 @@ function Hero() {
       <div className="absolute -z-10 left-1/2 -translate-x-1/2 top-24 w-[60rem] h-[60rem] rounded-full bg-gradient-accent opacity-[0.07] blur-3xl" />
 
       <div className="mx-auto max-w-6xl px-4">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="mb-6 inline-flex items-center gap-4"
+        >
+          <div className="relative">
+            <span className="absolute -inset-1 rounded-full bg-gradient-accent opacity-60 blur-md" />
+            <img
+              src={profileAsset.url}
+              alt="Prithvi Pandey"
+              className="relative w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border-2 border-foreground/20 shadow-glow"
+            />
+          </div>
+        </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -463,7 +479,7 @@ function ProjectVisual({ slug, accent }: { slug: string; accent: string }) {
 
 function Work() {
   return (
-    <Section id="work" eyebrow="Featured Work" title="Featured Work">
+    <Section id="work" eyebrow="Featured Work" title="Project Highlights">
       <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
         {projects.map((p, i) => (
           <motion.div
@@ -611,7 +627,7 @@ function Recognition() {
     { t: "Oracle Certified Associate", o: "Oracle", y: "2018", i: BadgeCheck },
   ];
   return (
-    <Section eyebrow="Recognition" title="Recognition">
+    <Section eyebrow="Recognition" title="Accolades & Achievements">
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {items.map(({ t, o, y, i: Icon }) => (
           <div
