@@ -234,6 +234,8 @@ export const projects: Project[] = [
         { value: "+15%", label: "Retention Improvement" },
         { value: "+10%", label: "Increase in Trip Attach Rate" },
       ],
+      thinking:
+        "Loyalty isn't a discount — it's a habit. Real retention comes from making members feel seen, not just rewarded.",
       outcome:
         "The loyalty revamp transformed the program from a transaction-oriented rewards system into a stronger retention and engagement engine. By improving member quality, simplifying program design, strengthening reward mechanics, and increasing benefit awareness, the initiative delivered measurable retention gains while creating a more sustainable foundation for long-term customer value.",
       flow: [],
@@ -268,7 +270,7 @@ export const projects: Project[] = [
     company: "Victoria's Secret",
     tag: "Global Commerce Systems",
     summary:
-      "Two parallel workstreams — a checkout provider migration and EU distribution center enablement — that together strengthened international customer experience and fulfillment.",
+      "Two sequential initiatives — a checkout provider migration followed by EU distribution center enablement — that together strengthened international customer experience and fulfillment.",
     highlights: [
       "Checkout provider migration",
       "EU distribution center enablement",
@@ -281,17 +283,17 @@ export const projects: Project[] = [
         "As Victoria's Secret expanded internationally, customer experience and operational efficiency varied significantly across markets. The existing checkout had limitations in supporting localized experiences across payments, currencies, and regional customer expectations. At the same time, European orders were fulfilled from the US, leading to longer delivery timelines, higher shipping costs, and operational inefficiencies. Improving international growth required both a stronger commerce experience and a more efficient fulfillment model.",
       why: "International growth depends on more than market availability — it requires seamless customer experiences and efficient operational systems. Checkout performance directly impacts conversion and customer experience, while fulfillment speed and delivery experience influence customer satisfaction and repeat behavior. The opportunity was to improve international customer experience while creating a more scalable operational foundation for growth.",
       strategy:
-        "The strategy focused on two parallel workstreams: (1) modernize checkout infrastructure through migration to a new checkout provider, and (2) improve regional fulfillment capabilities through EU distribution center enablement. The checkout migration focused on flexibility, performance, localization, and customer experience across international markets. The EU fulfillment initiative aimed to reduce delivery timelines and shipping complexity by moving fulfillment closer to customers. Together, these initiatives created a more scalable international commerce foundation.",
+        "The program was executed sequentially. First, modernize the checkout — migrate to a new provider to improve flexibility, performance, localization, and customer experience across international markets. Then, enable EU fulfillment — stand up a regional distribution center to reduce delivery timelines and shipping costs by moving inventory closer to customers. Together, these initiatives created a more scalable international commerce foundation.",
       role:
-        "Led product management across both workstreams as part of a broader international expansion initiative. Worked cross-functionally with engineering, business, operations, supply chain, and external partners to define requirements, prioritize rollout, and drive execution. Responsibilities included defining roadmap and priorities, coordinating multi-market rollout planning, aligning business and technical stakeholders, managing checkout migration requirements, supporting EU fulfillment enablement, and driving execution across interconnected systems.",
+        "Co-led key product initiatives within a broader international expansion program focused on checkout modernization and EU fulfillment enablement. Owned product requirements and execution for the checkout provider migration, partnering with engineering, business stakeholders, and external vendors to support multi-market rollout. Collaborated closely with operations, supply chain, and fulfillment teams on EU distribution center enablement, ensuring alignment across customer experience, inventory, and order fulfillment systems. Played a central role in stakeholder management, cross-functional coordination, and delivery across multiple commerce and operational workstreams.",
       decisions: [
-        "Phased migration over big-bang rollout — checkout migration was executed in phases to reduce operational risk and ensure stability across markets.",
+        "Sequential rollout over parallel execution — checkout modernization first, then EU fulfillment, to reduce operational risk and stabilize each initiative before the next.",
         "Treat checkout and fulfillment as interconnected systems — customer experience improvements required coordination between front-end commerce and backend fulfillment.",
         "Prioritize scalability alongside speed — the program built infrastructure to support future international growth, not just immediate gains.",
         "Balance standardization with regional requirements — core platform consistency was maintained while enabling flexibility for regional operational needs.",
       ],
       execution:
-        "Executed through parallel workstreams. Checkout Migration: rolled out migration to a new checkout provider in phases, ensuring continuity while improving localization, customer experience, and platform flexibility. EU Fulfillment: enabled EU distribution center fulfillment by coordinating vendor integrations, operational readiness, inventory alignment, and order routing. The phased approach reduced implementation risk while maintaining operational continuity.",
+        "Executed sequentially. Checkout Migration came first — rolled out a new checkout provider in phases, ensuring continuity while improving localization, customer experience, and platform flexibility. EU Fulfillment followed — enabling EU distribution center fulfillment through vendor integrations, operational readiness, inventory alignment, and order routing. The sequenced approach reduced implementation risk while maintaining operational continuity.",
       technical:
         "Required coordination across multiple commerce and operational systems: checkout platform migration, payment integrations, localization capabilities, currency and regional configurations, order routing, regional inventory alignment, fulfillment workflows, and vendor/logistics integrations. Managing dependencies across customer experience and operational systems was a key complexity.",
       tradeoffs: [
@@ -305,6 +307,8 @@ export const projects: Project[] = [
         { label: "YoY revenue growth (checkout)", value: "15%" },
         { label: "EU delivery timelines", value: "7–8d → 1–2d" },
       ],
+      thinking:
+        "International growth lives or dies on operational details — the customer never sees the warehouse, but they feel it in every delivery.",
       outcome:
         "Delivered a stronger international commerce foundation through improvements across both customer experience and fulfillment systems. The initiative improved checkout capabilities, strengthened regional fulfillment operations, and supported more scalable international growth.",
       flow: [],
@@ -316,7 +320,7 @@ export const projects: Project[] = [
             "Enabled more scalable international checkout capabilities across payments, localization, and customer experience.",
           metrics: [
             { value: "15%", label: "YoY revenue growth" },
-            { value: "Multi-Market", label: "Checkout rollout" },
+            { value: "$3M", label: "Cost savings" },
             { value: "Improved", label: "Checkout experience & localization" },
           ],
           flow: [
@@ -333,7 +337,7 @@ export const projects: Project[] = [
             "Moved fulfillment closer to customers through EU distribution enablement, significantly improving delivery experience.",
           metrics: [
             { value: "~$5M", label: "Annual business impact" },
-            { value: "7–8d → 1–2d", label: "EU delivery timelines" },
+            { value: "75% faster", label: "Reduction in delivery timelines" },
             { value: "Improved", label: "Regional fulfillment experience" },
           ],
           flow: [
