@@ -672,7 +672,7 @@ function Contact() {
             href="mailto:prithvi20261@outlook.com"
             className="inline-flex items-center gap-2 px-5 py-3 rounded-full glass hover:bg-card transition"
           >
-            <Mail className="w-4 h-4" /> Email
+            <Mail className="w-4 h-4" /> prithvi20261@outlook.com
           </a>
         </div>
         <div className="mt-20 text-xs text-muted-foreground">
