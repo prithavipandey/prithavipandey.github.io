@@ -43,6 +43,8 @@ import loyaltyActivation from "@/assets/loyalty-activation.jpg.asset.json";
 import pimArchitecture from "@/assets/pim-architecture.png.asset.json";
 import intlExpansion from "@/assets/intl-expansion.png.asset.json";
 import profileAsset from "@/assets/profile.jpg.asset.json";
+import mmtblack1 from "@/assets/mmtblack1.png.asset.json";
+import mmtblack5 from "@/assets/mmtblack5.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -136,17 +138,8 @@ function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="mb-6 inline-flex items-center gap-4"
-        >
-          <div className="relative">
-            <span className="absolute -inset-1 rounded-full bg-gradient-accent opacity-60 blur-md" />
-            <img
-              src={profileAsset.url}
-              alt="Prithvi Pandey"
-              className="relative w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border-2 border-foreground/20 shadow-glow"
-            />
-          </div>
-        </motion.div>
+          className="hidden"
+        />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -465,9 +458,8 @@ function ProjectVisual({ slug, accent }: { slug: string; accent: string }) {
         {slug === "loyalty-revamp" && (
           <ScreenshotStrip
             images={[
-              { src: loyaltyTiers.url, alt: "Loyalty tier redesign" },
-              { src: loyaltyUpgrade.url, alt: "Loyalty benefits and rewards" },
-              { src: loyaltyActivation.url, alt: "Loyalty activation journey" },
+              { src: mmtblack1.url, alt: "MMTBLACK Platinum upgrade reward summary" },
+              { src: mmtblack5.url, alt: "MMTBLACK tier benefits comparison" },
             ]}
           />
         )}
