@@ -1,5 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import profileAsset from "@/assets/profile.jpg.asset.json";
 
 const links = [
   { hash: "work", label: "Work" },
@@ -32,7 +33,11 @@ export function SiteNav() {
         >
           <Link to="/" className="flex items-center gap-2 group">
             <span className="relative grid place-items-center w-8 h-8 rounded-full bg-gradient-accent shadow-glow">
-              <span className="absolute inset-[2px] rounded-full bg-background grid place-items-center text-xs font-semibold text-gradient">PP</span>
+              <img
+                src={profileAsset.url}
+                alt="Prithvi Pandey"
+                className="absolute inset-[2px] rounded-full object-cover w-[calc(100%-4px)] h-[calc(100%-4px)]"
+              />
             </span>
             <span className="text-sm font-medium tracking-tight">Prithvi Pandey</span>
           </Link>
