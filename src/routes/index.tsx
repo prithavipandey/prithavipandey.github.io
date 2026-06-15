@@ -42,7 +42,6 @@ import loyaltyUpgrade from "@/assets/loyalty-upgrade.jpg.asset.json";
 import loyaltyActivation from "@/assets/loyalty-activation.jpg.asset.json";
 import pimArchitecture from "@/assets/pim-architecture.png.asset.json";
 import intlExpansion from "@/assets/intl-expansion.png.asset.json";
-import profileAsset from "@/assets/profile.jpg.asset.json";
 import mmtblack1 from "@/assets/mmtblack1.png.asset.json";
 import mmtblack5 from "@/assets/mmtblack5.jpg.asset.json";
 
