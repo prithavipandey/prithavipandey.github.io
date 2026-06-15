@@ -30,7 +30,7 @@ export type Project = {
     experiences?: {
       label: string;
       title: string;
-      image: string;
+      images: string[];
       alt: string;
       copy: string;
     }[];
