@@ -96,7 +96,7 @@ function Block({ label, children }: { label: string; children: React.ReactNode }
 function ExperienceCard({
   label,
   title,
-  image,
+  images,
   alt,
   copy,
   aspect,
@@ -104,7 +104,7 @@ function ExperienceCard({
 }: {
   label: string;
   title: string;
-  image: string;
+  images: string[];
   alt: string;
   copy: string;
   aspect: string;
@@ -118,13 +118,17 @@ function ExperienceCard({
       transition={{ duration: 0.5 }}
       className="group relative rounded-2xl overflow-hidden bg-card/60 border border-foreground/10 hover:border-electric/30 transition"
     >
-      <div className={`${aspect} w-full overflow-hidden bg-gradient-to-b from-foreground/[0.04] to-foreground/[0.02] grid place-items-center`}>
-        <img
-          src={image}
-          alt={alt}
-          loading="lazy"
-          className={`w-full h-full ${fit === "contain" ? "object-contain p-4" : "object-cover"} group-hover:scale-[1.02] transition duration-500`}
-        />
+      <div className={`w-full overflow-hidden bg-gradient-to-b from-foreground/[0.04] to-foreground/[0.02] p-3 grid gap-2`} style={{ gridTemplateColumns: `repeat(${images.length}, minmax(0, 1fr))` }}>
+        {images.map((src, i) => (
+          <div key={src} className={`${aspect} w-full overflow-hidden rounded-lg bg-background/40 grid place-items-center`}>
+            <img
+              src={src}
+              alt={i === 0 ? alt : `${alt} ${i + 1}`}
+              loading="lazy"
+              className={`w-full h-full ${fit === "contain" ? "object-contain" : "object-cover object-top"} group-hover:scale-[1.02] transition duration-500`}
+            />
+          </div>
+        ))}
       </div>
       <div className="p-5 md:p-6">
         <div className="text-[10px] uppercase tracking-[0.22em] text-electric/90">{label}</div>
@@ -182,7 +186,7 @@ function CaseStudy() {
             </p>
 
             {/* Premium impact strip — hidden for dual-track projects (e.g. International Expansion) */}
-            {!tracks && !isPim && (
+            {!tracks && !isPim && !isLoyalty && (
             <div className="mt-12 grid md:grid-cols-[1.2fr_1fr_1fr_1fr] gap-3">
               <div className="relative overflow-hidden rounded-2xl p-5 md:p-6 border border-electric/30 bg-gradient-to-br from-electric/[0.12] via-card/60 to-transparent shadow-glow">
                 <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-electric/60 to-transparent" />
@@ -257,7 +261,7 @@ function CaseStudy() {
                 <ExperienceCard
                   label="Marketplace Commerce"
                   title="TikTok Marketplace Integration"
-                  image={tiktokShopMock}
+                  images={[tiktokShopMock]}
                   alt="Victoria's Secret storefront within TikTok Shop"
                   copy="Enabled catalog-driven product discovery and shopping experiences through TikTok Shop using centralized product syndication."
                   aspect="aspect-[3/4]"
@@ -265,7 +269,7 @@ function CaseStudy() {
                 <ExperienceCard
                   label="Conversational Commerce"
                   title="LLM-Powered Shopping Experience"
-                  image={llmShoppingMock}
+                  images={[llmShoppingMock]}
                   alt="ChatGPT conversation surfacing Victoria's Secret loungewear recommendations"
                   copy="Enabled conversational product discovery across OpenAI and Google UCP powered by structured product catalog data."
                   aspect="aspect-[4/3]"
@@ -278,13 +282,13 @@ function CaseStudy() {
               <p className="text-sm text-muted-foreground -mt-1">
                 Real member-facing experiences from the redesigned loyalty program.
               </p>
-              <div className="grid md:grid-cols-3 gap-5 pt-2">
+              <div className="grid md:grid-cols-1 gap-6 pt-2">
                 {experiences.map((e) => (
                   <ExperienceCard
                     key={e.title}
                     label={e.label}
                     title={e.title}
-                    image={imageMap[e.image] ?? e.image}
+                    images={e.images.map((img) => imageMap[img] ?? img)}
                     alt={e.alt}
                     copy={e.copy}
                     aspect="aspect-[3/4]"
@@ -304,29 +308,29 @@ function CaseStudy() {
             </Block>
           ) : !tracks ? (
             <Block label="Impact">
-              <div className={`grid sm:grid-cols-2 gap-${isPim ? "4" : "3"}`}>
+              <div className={`grid sm:grid-cols-2 gap-${isPim || isLoyalty ? "4" : "3"}`}>
                 {(impactCards ?? p.detail.metrics).map((m) => (
                   <div
                     key={m.label}
                     className={`relative rounded-2xl overflow-hidden ${
-                      isPim
+                      isPim || isLoyalty
                         ? "p-6 bg-gradient-to-br from-electric/[0.12] via-card/70 to-transparent border border-electric/30 shadow-glow"
                         : "p-4 bg-card/60 border border-foreground/10"
                     }`}
                   >
-                    {isPim && (
+                    {(isPim || isLoyalty) && (
                       <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-electric/60 to-transparent" />
                     )}
                     <div
                       className={`font-semibold tracking-[-0.02em] text-gradient leading-none pb-1 ${
-                        isPim ? "text-4xl md:text-5xl" : "text-xl"
+                        isPim || isLoyalty ? "text-4xl md:text-5xl" : "text-xl"
                       }`}
                     >
                       {m.value}
                     </div>
                     <div
                       className={`mt-3 ${
-                        isPim
+                        isPim || isLoyalty
                           ? "text-[11px] uppercase tracking-wider text-foreground/75"
                           : "text-xs text-muted-foreground mt-2"
                       }`}
