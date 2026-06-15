@@ -21,11 +21,21 @@ import loyaltyTiers from "@/assets/loyalty-tiers.jpg.asset.json";
 import loyaltyUpgrade from "@/assets/loyalty-upgrade.jpg.asset.json";
 import loyaltyActivation from "@/assets/loyalty-activation.jpg.asset.json";
 import pimArchitecture from "@/assets/pim-architecture.png.asset.json";
+import mmtblack1 from "@/assets/mmtblack1.png.asset.json";
+import mmtblack2 from "@/assets/mmtblack2.png.asset.json";
+import mmtblack3 from "@/assets/mmtblack3.png.asset.json";
+import mmtblack4 from "@/assets/mmtblack4.png.asset.json";
+import mmtblack5 from "@/assets/mmtblack5.jpg.asset.json";
 
 const imageMap: Record<string, string> = {
   __LOYALTY_TIERS__: loyaltyTiers.url,
   __LOYALTY_UPGRADE__: loyaltyUpgrade.url,
   __LOYALTY_ACTIVATION__: loyaltyActivation.url,
+  __MMTBLACK1__: mmtblack1.url,
+  __MMTBLACK2__: mmtblack2.url,
+  __MMTBLACK3__: mmtblack3.url,
+  __MMTBLACK4__: mmtblack4.url,
+  __MMTBLACK5__: mmtblack5.url,
 };
 
 export const Route = createFileRoute("/work/$slug")({
