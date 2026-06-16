@@ -64,12 +64,12 @@ export const projects: Project[] = [
     tags: ["LLM Enrichment"],
     detail: {
       problem:
-        "Product information existed across multiple fragmented systems, creating inconsistent product data, heavy manual effort, and slower operational workflows. Teams relied on disconnected upstream feeds, spreadsheets, and manual interventions, which impacted product quality, discoverability, and speed to market. As the catalog scaled globally, maintaining consistent and enriched product information across downstream systems became increasingly difficult.",
-      why: "In ecommerce, high-quality product data directly influences search, browse, recommendations, merchandising, and customer conversion. Poor product data quality creates downstream inefficiencies across merchandising, site experience, marketing, and operations — while also impacting customer discoverability. The opportunity was to create a scalable product data foundation that could improve consistency, reduce operational effort, and support future commerce experiences.",
+        "Product data lived across fragmented upstream systems, creating real downstream pain:\n\n• Inconsistent product information across channels\n• Heavy manual effort and spreadsheet-driven workflows\n• Slower speed to market as the catalog scaled globally\n• Weaker discoverability and product quality for customers",
+      why: "Product data quality directly drives search, browse, recommendations, merchandising, and conversion. A scalable foundation was needed to improve consistency, cut operational load, and unlock future commerce experiences.",
       strategy:
-        "Build a centralized PIM platform that serves as a governed source of truth for product data, with three goals: centralize fragmented product information, improve enrichment quality through AI-assisted workflows, and enable merchant teams with self-serve tooling while maintaining governance. The platform leveraged Google Vertex AI and LLM-powered enrichment, supported by a human-in-the-loop workflow for quality control. A Salesforce-based merchant workspace enabled business users to review, edit, and govern product information before syndicating it downstream.",
+        "Build a centralized, governed PIM as the single source of truth for product data:\n\n• Centralize fragmented upstream product information\n• Improve enrichment via Vertex AI + LLM workflows with human-in-the-loop QA\n• Empower merchants with a Salesforce-based self-serve workspace\n• Syndicate clean, enriched data to all downstream systems",
       role:
-        "Owned product strategy and execution for the 0→1 PIM initiative. Worked cross-functionally with engineering, data science, merchandising, and business stakeholders to define platform requirements, prioritize capabilities, and drive rollout — including defining product vision and roadmap, prioritizing platform capabilities, translating merchant pain points into workflows, aligning technical and business stakeholders, and driving adoption.",
+        "Owned product strategy and execution for the 0→1 PIM initiative — vision and roadmap, capability prioritization, translating merchant pain into workflows, aligning technical and business stakeholders, and driving adoption across engineering, data science, merchandising, and business teams.",
       decisions: [
         "Treat PIM as a platform capability, not just an operational tool — designed to serve commerce, search, merchandising, and marketing as downstream consumers.",
         "Human-assisted AI, not full automation — LLM enrichment accelerated attribute extraction while preserving merchant oversight for accuracy and governance.",
@@ -77,16 +77,16 @@ export const projects: Project[] = [
         "Design for scale and extensibility — built to support future categories, additional enrichment workflows, and downstream integrations.",
       ],
       execution:
-        "Phased rollout to reduce implementation risk while demonstrating early business value. Phase 1: centralized ingestion and transformation of upstream product data. Phase 2: AI-powered enrichment and attribute extraction workflows. Phase 3: merchant self-serve review and governance through Salesforce. Phase 4: syndication of standardized, enriched product information to downstream systems.",
+        "Phased rollout to de-risk delivery and show value early:\n\n• Phase 1 — Centralized ingestion and transformation of upstream data\n• Phase 2 — AI-powered enrichment and attribute extraction\n• Phase 3 — Merchant self-serve review and governance in Salesforce\n• Phase 4 — Syndication of standardized, enriched data downstream",
       technical:
-        "Coordination across multiple technical layers — upstream product data ingestion, structured transformation pipelines, LLM-powered enrichment workflows, RAG-based attribute extraction, merchant review and governance interfaces, Salesforce integration, and downstream syndication across commerce systems. Balancing automation, governance, and usability was a core platform design challenge.",
+        "Coordination across multiple layers — upstream ingestion, transformation pipelines, LLM enrichment, RAG-based attribute extraction, merchant review interfaces, Salesforce integration, and downstream syndication. Core challenge: balancing automation, governance, and usability.",
       tradeoffs: [
         "Automation vs. accuracy — full automation risked product quality, so AI enrichment was paired with merchant review loops to maintain trust.",
         "Standardization vs. business flexibility — governance for consistency while allowing category-level flexibility where needed.",
         "Speed vs. scalability — prioritized phased rollout and usable iterations over waiting for a perfect end-state platform.",
       ],
       collaboration:
-        "Partnered closely with engineering, data science / ML teams, merchandising, merchant operations, site experience, business stakeholders, and leadership to align platform priorities, rollout sequencing, and adoption.",
+        "Partnered across engineering, data science / ML, merchandising, merchant operations, site experience, business stakeholders, and leadership to align priorities, sequencing, and adoption.",
       metrics: [
         { label: "Annual uplift", value: "~$4M" },
         { label: "Enrichment accuracy", value: "90%+" },
@@ -96,7 +96,7 @@ export const projects: Project[] = [
       thinking:
         "Platform products win by removing friction for every team downstream. The real success metric isn't the platform itself — it's how much faster every other team can ship because of it.",
       outcome:
-        "Established product data as a strategic platform capability — improving product discoverability and downstream consistency, reducing manual operational load, and creating a foundation for AI-driven merchandising and future commerce experiences.",
+        "Established product data as a strategic platform capability:\n\n• Improved discoverability and downstream consistency\n• Reduced manual operational load\n• Created the foundation for AI-driven merchandising and future commerce experiences",
       flow: [
         "Upstream Systems",
         "Data Structuring & Transformation",
@@ -273,12 +273,12 @@ export const projects: Project[] = [
     accent: "cyan",
     detail: {
       problem:
-        "As Victoria's Secret expanded internationally, customer experience and operational efficiency varied significantly across markets. The existing checkout had limitations in supporting localized experiences across payments, currencies, and regional customer expectations. At the same time, European orders were fulfilled from the US, leading to longer delivery timelines, higher shipping costs, and operational inefficiencies. Improving international growth required both a stronger commerce experience and a more efficient fulfillment model.",
-      why: "International growth depends on more than market availability — it requires seamless customer experiences and efficient operational systems. Checkout performance directly impacts conversion and customer experience, while fulfillment speed and delivery experience influence customer satisfaction and repeat behavior. The opportunity was to improve international customer experience while creating a more scalable operational foundation for growth.",
+        "International growth was being held back on two fronts:\n\n• Checkout couldn't fully support localized payments, currencies, and regional expectations\n• EU orders shipped from the US — longer delivery times, higher costs, and operational drag\n\nA stronger commerce experience and a more efficient fulfillment model were both needed.",
+      why: "Checkout performance drives conversion; delivery speed drives satisfaction and repeat behavior. International growth needed both — improved customer experience and a more scalable operational foundation.",
       strategy:
-        "The program was executed sequentially. First, modernize the checkout — migrate to a new provider to improve flexibility, performance, localization, and customer experience across international markets. Then, enable EU fulfillment — stand up a regional distribution center to reduce delivery timelines and shipping costs by moving inventory closer to customers. Together, these initiatives created a more scalable international commerce foundation.",
+        "Sequenced, two-part program:\n\n• Modernize checkout — migrate to a new provider for better flexibility, performance, and localization across markets\n• Enable EU fulfillment — stand up a regional distribution center to move inventory closer to customers\n\nTogether, a more scalable international commerce foundation.",
       role:
-        "Co-led key product initiatives within a broader international expansion program focused on checkout modernization and EU fulfillment enablement. Owned product requirements and execution for the checkout provider migration, partnering with engineering, business stakeholders, and external vendors to support multi-market rollout. Collaborated closely with operations, supply chain, and fulfillment teams on EU distribution center enablement, ensuring alignment across customer experience, inventory, and order fulfillment systems. Played a central role in stakeholder management, cross-functional coordination, and delivery across multiple commerce and operational workstreams.",
+        "Co-led product across both initiatives:\n\n• Owned requirements and execution for the checkout provider migration with engineering, business, and external vendors\n• Partnered with operations, supply chain, and fulfillment on EU DC enablement across CX, inventory, and order systems\n• Drove stakeholder management and cross-functional delivery across workstreams",
       decisions: [
         "Sequential rollout over parallel execution — checkout modernization first, then EU fulfillment, to reduce operational risk and stabilize each initiative before the next.",
         "Treat checkout and fulfillment as interconnected systems — customer experience improvements required coordination between front-end commerce and backend fulfillment.",
@@ -286,16 +286,16 @@ export const projects: Project[] = [
         "Balance standardization with regional requirements — core platform consistency was maintained while enabling flexibility for regional operational needs.",
       ],
       execution:
-        "Executed sequentially. Checkout Migration came first — rolled out a new checkout provider in phases, ensuring continuity while improving localization, customer experience, and platform flexibility. EU Fulfillment followed — enabling EU distribution center fulfillment through vendor integrations, operational readiness, inventory alignment, and order routing. The sequenced approach reduced implementation risk while maintaining operational continuity.",
+        "Run sequentially to reduce risk and preserve continuity:\n\n• Checkout Migration first — phased rollout of the new provider, improving localization, CX, and platform flexibility\n• EU Fulfillment next — vendor integrations, operational readiness, regional inventory alignment, and order routing for EU DC fulfillment",
       technical:
-        "Required coordination across multiple commerce and operational systems: checkout platform migration, payment integrations, localization capabilities, currency and regional configurations, order routing, regional inventory alignment, fulfillment workflows, and vendor/logistics integrations. Managing dependencies across customer experience and operational systems was a key complexity.",
+        "Coordination across many commerce and operational systems — checkout migration, payments, localization, currency and regional config, order routing, regional inventory, fulfillment workflows, and vendor/logistics integrations. Managing CX-to-ops dependencies was the core complexity.",
       tradeoffs: [
         "Speed vs. operational risk — a phased rollout was prioritized to reduce disruption during migration.",
         "Global consistency vs. regional flexibility — the program balanced platform standardization with country-level operational needs.",
         "Customer experience vs. implementation complexity — improving localization and fulfillment required coordination across multiple technical and operational systems.",
       ],
       collaboration:
-        "Partnered closely with engineering, supply chain & fulfillment, business stakeholders, finance, regional commercial teams, external vendors and partners, and operations to align rollout priorities, execution plans, and operational readiness.",
+        "Partnered across engineering, supply chain & fulfillment, finance, regional commercial teams, external vendors and partners, business stakeholders, and operations to align priorities, plans, and operational readiness.",
       metrics: [
         { label: "YoY revenue growth (checkout)", value: "15%" },
         { label: "EU delivery timelines", value: "7–8d → 1–2d" },
@@ -303,7 +303,7 @@ export const projects: Project[] = [
       thinking:
         "International growth lives or dies on operational details — the customer never sees the warehouse, but they feel it in every delivery.",
       outcome:
-        "Delivered a stronger international commerce foundation through improvements across both customer experience and fulfillment systems. The initiative improved checkout capabilities, strengthened regional fulfillment operations, and supported more scalable international growth.",
+        "A stronger international commerce foundation:\n\n• Improved checkout capabilities and localization\n• Strengthened regional fulfillment operations\n• More scalable international growth going forward",
       flow: [],
       tracks: {
         left: {
