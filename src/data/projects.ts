@@ -273,12 +273,12 @@ export const projects: Project[] = [
     accent: "cyan",
     detail: {
       problem:
-        "As Victoria's Secret expanded internationally, customer experience and operational efficiency varied significantly across markets. The existing checkout had limitations in supporting localized experiences across payments, currencies, and regional customer expectations. At the same time, European orders were fulfilled from the US, leading to longer delivery timelines, higher shipping costs, and operational inefficiencies. Improving international growth required both a stronger commerce experience and a more efficient fulfillment model.",
-      why: "International growth depends on more than market availability — it requires seamless customer experiences and efficient operational systems. Checkout performance directly impacts conversion and customer experience, while fulfillment speed and delivery experience influence customer satisfaction and repeat behavior. The opportunity was to improve international customer experience while creating a more scalable operational foundation for growth.",
+        "International growth was being held back on two fronts:\n\n• Checkout couldn't fully support localized payments, currencies, and regional expectations\n• EU orders shipped from the US — longer delivery times, higher costs, and operational drag\n\nA stronger commerce experience and a more efficient fulfillment model were both needed.",
+      why: "Checkout performance drives conversion; delivery speed drives satisfaction and repeat behavior. International growth needed both — improved customer experience and a more scalable operational foundation.",
       strategy:
-        "The program was executed sequentially. First, modernize the checkout — migrate to a new provider to improve flexibility, performance, localization, and customer experience across international markets. Then, enable EU fulfillment — stand up a regional distribution center to reduce delivery timelines and shipping costs by moving inventory closer to customers. Together, these initiatives created a more scalable international commerce foundation.",
+        "Sequenced, two-part program:\n\n• Modernize checkout — migrate to a new provider for better flexibility, performance, and localization across markets\n• Enable EU fulfillment — stand up a regional distribution center to move inventory closer to customers\n\nTogether, a more scalable international commerce foundation.",
       role:
-        "Co-led key product initiatives within a broader international expansion program focused on checkout modernization and EU fulfillment enablement. Owned product requirements and execution for the checkout provider migration, partnering with engineering, business stakeholders, and external vendors to support multi-market rollout. Collaborated closely with operations, supply chain, and fulfillment teams on EU distribution center enablement, ensuring alignment across customer experience, inventory, and order fulfillment systems. Played a central role in stakeholder management, cross-functional coordination, and delivery across multiple commerce and operational workstreams.",
+        "Co-led product across both initiatives:\n\n• Owned requirements and execution for the checkout provider migration with engineering, business, and external vendors\n• Partnered with operations, supply chain, and fulfillment on EU DC enablement across CX, inventory, and order systems\n• Drove stakeholder management and cross-functional delivery across workstreams",
       decisions: [
         "Sequential rollout over parallel execution — checkout modernization first, then EU fulfillment, to reduce operational risk and stabilize each initiative before the next.",
         "Treat checkout and fulfillment as interconnected systems — customer experience improvements required coordination between front-end commerce and backend fulfillment.",
@@ -286,16 +286,16 @@ export const projects: Project[] = [
         "Balance standardization with regional requirements — core platform consistency was maintained while enabling flexibility for regional operational needs.",
       ],
       execution:
-        "Executed sequentially. Checkout Migration came first — rolled out a new checkout provider in phases, ensuring continuity while improving localization, customer experience, and platform flexibility. EU Fulfillment followed — enabling EU distribution center fulfillment through vendor integrations, operational readiness, inventory alignment, and order routing. The sequenced approach reduced implementation risk while maintaining operational continuity.",
+        "Run sequentially to reduce risk and preserve continuity:\n\n• Checkout Migration first — phased rollout of the new provider, improving localization, CX, and platform flexibility\n• EU Fulfillment next — vendor integrations, operational readiness, regional inventory alignment, and order routing for EU DC fulfillment",
       technical:
-        "Required coordination across multiple commerce and operational systems: checkout platform migration, payment integrations, localization capabilities, currency and regional configurations, order routing, regional inventory alignment, fulfillment workflows, and vendor/logistics integrations. Managing dependencies across customer experience and operational systems was a key complexity.",
+        "Coordination across many commerce and operational systems — checkout migration, payments, localization, currency and regional config, order routing, regional inventory, fulfillment workflows, and vendor/logistics integrations. Managing CX-to-ops dependencies was the core complexity.",
       tradeoffs: [
         "Speed vs. operational risk — a phased rollout was prioritized to reduce disruption during migration.",
         "Global consistency vs. regional flexibility — the program balanced platform standardization with country-level operational needs.",
         "Customer experience vs. implementation complexity — improving localization and fulfillment required coordination across multiple technical and operational systems.",
       ],
       collaboration:
-        "Partnered closely with engineering, supply chain & fulfillment, business stakeholders, finance, regional commercial teams, external vendors and partners, and operations to align rollout priorities, execution plans, and operational readiness.",
+        "Partnered across engineering, supply chain & fulfillment, finance, regional commercial teams, external vendors and partners, business stakeholders, and operations to align priorities, plans, and operational readiness.",
       metrics: [
         { label: "YoY revenue growth (checkout)", value: "15%" },
         { label: "EU delivery timelines", value: "7–8d → 1–2d" },
@@ -303,7 +303,7 @@ export const projects: Project[] = [
       thinking:
         "International growth lives or dies on operational details — the customer never sees the warehouse, but they feel it in every delivery.",
       outcome:
-        "Delivered a stronger international commerce foundation through improvements across both customer experience and fulfillment systems. The initiative improved checkout capabilities, strengthened regional fulfillment operations, and supported more scalable international growth.",
+        "A stronger international commerce foundation:\n\n• Improved checkout capabilities and localization\n• Strengthened regional fulfillment operations\n• More scalable international growth going forward",
       flow: [],
       tracks: {
         left: {
