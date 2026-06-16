@@ -64,12 +64,12 @@ export const projects: Project[] = [
     tags: ["LLM Enrichment"],
     detail: {
       problem:
-        "Product information existed across multiple fragmented systems, creating inconsistent product data, heavy manual effort, and slower operational workflows. Teams relied on disconnected upstream feeds, spreadsheets, and manual interventions, which impacted product quality, discoverability, and speed to market. As the catalog scaled globally, maintaining consistent and enriched product information across downstream systems became increasingly difficult.",
-      why: "In ecommerce, high-quality product data directly influences search, browse, recommendations, merchandising, and customer conversion. Poor product data quality creates downstream inefficiencies across merchandising, site experience, marketing, and operations — while also impacting customer discoverability. The opportunity was to create a scalable product data foundation that could improve consistency, reduce operational effort, and support future commerce experiences.",
+        "Product data lived across fragmented upstream systems, creating real downstream pain:\n\n• Inconsistent product information across channels\n• Heavy manual effort and spreadsheet-driven workflows\n• Slower speed to market as the catalog scaled globally\n• Weaker discoverability and product quality for customers",
+      why: "Product data quality directly drives search, browse, recommendations, merchandising, and conversion. A scalable foundation was needed to improve consistency, cut operational load, and unlock future commerce experiences.",
       strategy:
-        "Build a centralized PIM platform that serves as a governed source of truth for product data, with three goals: centralize fragmented product information, improve enrichment quality through AI-assisted workflows, and enable merchant teams with self-serve tooling while maintaining governance. The platform leveraged Google Vertex AI and LLM-powered enrichment, supported by a human-in-the-loop workflow for quality control. A Salesforce-based merchant workspace enabled business users to review, edit, and govern product information before syndicating it downstream.",
+        "Build a centralized, governed PIM as the single source of truth for product data:\n\n• Centralize fragmented upstream product information\n• Improve enrichment via Vertex AI + LLM workflows with human-in-the-loop QA\n• Empower merchants with a Salesforce-based self-serve workspace\n• Syndicate clean, enriched data to all downstream systems",
       role:
-        "Owned product strategy and execution for the 0→1 PIM initiative. Worked cross-functionally with engineering, data science, merchandising, and business stakeholders to define platform requirements, prioritize capabilities, and drive rollout — including defining product vision and roadmap, prioritizing platform capabilities, translating merchant pain points into workflows, aligning technical and business stakeholders, and driving adoption.",
+        "Owned product strategy and execution for the 0→1 PIM initiative — vision and roadmap, capability prioritization, translating merchant pain into workflows, aligning technical and business stakeholders, and driving adoption across engineering, data science, merchandising, and business teams.",
       decisions: [
         "Treat PIM as a platform capability, not just an operational tool — designed to serve commerce, search, merchandising, and marketing as downstream consumers.",
         "Human-assisted AI, not full automation — LLM enrichment accelerated attribute extraction while preserving merchant oversight for accuracy and governance.",
@@ -77,16 +77,16 @@ export const projects: Project[] = [
         "Design for scale and extensibility — built to support future categories, additional enrichment workflows, and downstream integrations.",
       ],
       execution:
-        "Phased rollout to reduce implementation risk while demonstrating early business value. Phase 1: centralized ingestion and transformation of upstream product data. Phase 2: AI-powered enrichment and attribute extraction workflows. Phase 3: merchant self-serve review and governance through Salesforce. Phase 4: syndication of standardized, enriched product information to downstream systems.",
+        "Phased rollout to de-risk delivery and show value early:\n\n• Phase 1 — Centralized ingestion and transformation of upstream data\n• Phase 2 — AI-powered enrichment and attribute extraction\n• Phase 3 — Merchant self-serve review and governance in Salesforce\n• Phase 4 — Syndication of standardized, enriched data downstream",
       technical:
-        "Coordination across multiple technical layers — upstream product data ingestion, structured transformation pipelines, LLM-powered enrichment workflows, RAG-based attribute extraction, merchant review and governance interfaces, Salesforce integration, and downstream syndication across commerce systems. Balancing automation, governance, and usability was a core platform design challenge.",
+        "Coordination across multiple layers — upstream ingestion, transformation pipelines, LLM enrichment, RAG-based attribute extraction, merchant review interfaces, Salesforce integration, and downstream syndication. Core challenge: balancing automation, governance, and usability.",
       tradeoffs: [
         "Automation vs. accuracy — full automation risked product quality, so AI enrichment was paired with merchant review loops to maintain trust.",
         "Standardization vs. business flexibility — governance for consistency while allowing category-level flexibility where needed.",
         "Speed vs. scalability — prioritized phased rollout and usable iterations over waiting for a perfect end-state platform.",
       ],
       collaboration:
-        "Partnered closely with engineering, data science / ML teams, merchandising, merchant operations, site experience, business stakeholders, and leadership to align platform priorities, rollout sequencing, and adoption.",
+        "Partnered across engineering, data science / ML, merchandising, merchant operations, site experience, business stakeholders, and leadership to align priorities, sequencing, and adoption.",
       metrics: [
         { label: "Annual uplift", value: "~$4M" },
         { label: "Enrichment accuracy", value: "90%+" },
@@ -96,7 +96,7 @@ export const projects: Project[] = [
       thinking:
         "Platform products win by removing friction for every team downstream. The real success metric isn't the platform itself — it's how much faster every other team can ship because of it.",
       outcome:
-        "Established product data as a strategic platform capability — improving product discoverability and downstream consistency, reducing manual operational load, and creating a foundation for AI-driven merchandising and future commerce experiences.",
+        "Established product data as a strategic platform capability:\n\n• Improved discoverability and downstream consistency\n• Reduced manual operational load\n• Created the foundation for AI-driven merchandising and future commerce experiences",
       flow: [
         "Upstream Systems",
         "Data Structuring & Transformation",
