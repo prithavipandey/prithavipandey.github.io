@@ -63,6 +63,20 @@ export const Route = createFileRoute("/")({
       { property: "og:url", content: "https://prithvi-product-folio.lovable.app/" },
     ],
     links: [{ rel: "canonical", href: "https://prithvi-product-folio.lovable.app/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Prithvi Pandey",
+          jobTitle: "Senior Product Manager",
+          url: "https://prithvi-product-folio.lovable.app/",
+          email: "mailto:prithvi20261@outlook.com",
+          sameAs: ["https://www.linkedin.com/in/prithavipandey/"],
+        }),
+      },
+    ],
   }),
   component: Index,
 });
