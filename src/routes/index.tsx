@@ -52,15 +52,17 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Senior Product Manager building scalable commerce, platform, marketplace, growth, and AI-enabled products. ~9 years across product, data science, and engineering.",
+          "Senior PM building scalable commerce, platform, marketplace, growth, and AI-enabled products. ~9 years across product, data, and engineering.",
       },
       { property: "og:title", content: "Prithvi Pandey — Senior Product Manager" },
       {
         property: "og:description",
         content:
-          "Building scalable commerce & platform products. Senior PM with experience in commerce, platforms, marketplaces, growth, international expansion, and AI.",
+          "Senior PM building commerce, platform, marketplace, growth, and AI-enabled products.",
       },
+      { property: "og:url", content: "https://prithvi-product-folio.lovable.app/" },
     ],
+    links: [{ rel: "canonical", href: "https://prithvi-product-folio.lovable.app/" }],
   }),
   component: Index,
 });
