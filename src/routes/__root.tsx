@@ -72,14 +72,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Prithvi Pandey — Senior Product Manager" },
+      {
+        name: "description",
+        content:
+          "Portfolio of Prithvi Pandey — Senior PM building commerce, platform, marketplace, growth, and AI-enabled products.",
+      },
+      { name: "author", content: "Prithvi Pandey" },
+      { property: "og:title", content: "Prithvi Pandey — Senior Product Manager" },
+      {
+        property: "og:description",
+        content:
+          "Portfolio of Prithvi Pandey — Senior PM building commerce, platform, marketplace, growth, and AI-enabled products.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {

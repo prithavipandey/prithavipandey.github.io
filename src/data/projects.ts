@@ -1,6 +1,7 @@
 export type Project = {
   slug: string;
   title: string;
+  metaTitle?: string;
   company: string;
   tag: string;
   summary: string;
@@ -50,6 +51,7 @@ export const projects: Project[] = [
   {
     slug: "ai-pim-platform",
     title: "AI-Powered Product Information Management (PIM) Platform",
+    metaTitle: "AI-Powered PIM Platform",
     company: "Victoria's Secret",
     tag: "0→1 Platform Product",
     summary:
@@ -110,6 +112,7 @@ export const projects: Project[] = [
   {
     slug: "emerging-commerce-tiktok-llm",
     title: "Emerging Commerce Channels: Marketplace & Conversational Discovery",
+    metaTitle: "Emerging Commerce Channels",
     company: "Victoria's Secret",
     tag: "Commerce Expansion & Discovery",
     summary:
@@ -186,6 +189,7 @@ export const projects: Project[] = [
   {
     slug: "loyalty-revamp",
     title: "Loyalty Program Revamp",
+    metaTitle: "Loyalty Program Revamp",
     company: "MakeMyTrip",
     tag: "Growth & Retention",
     summary:
@@ -260,10 +264,11 @@ export const projects: Project[] = [
   {
     slug: "global-commerce-eu",
     title: "International Expansion: Checkout Modernization & EU Fulfillment",
+    metaTitle: "International Expansion",
     company: "Victoria's Secret",
     tag: "Global Commerce Systems",
     summary:
-      "Two sequential initiatives — a checkout provider migration followed by EU distribution center enablement — that together strengthened international customer experience and fulfillment.",
+      "Checkout provider migration and EU distribution center enablement — strengthening international customer experience and fulfillment.",
     highlights: [
       "Checkout provider migration",
       "EU distribution center enablement",
