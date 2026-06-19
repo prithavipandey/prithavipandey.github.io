@@ -53,6 +53,26 @@ export const Route = createFileRoute("/work/$slug")({
         { property: "og:url", content: canonical },
       ],
       links: [{ rel: "canonical", href: canonical }],
+      scripts: p
+        ? [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Article",
+                headline: p.title,
+                description: p.summary,
+                author: {
+                  "@type": "Person",
+                  name: "Prithvi Pandey",
+                  url: "https://prithvi-product-folio.lovable.app/",
+                },
+                url: canonical,
+                mainEntityOfPage: canonical,
+              }),
+            },
+          ]
+        : undefined,
     };
   },
   loader: ({ params }) => {
