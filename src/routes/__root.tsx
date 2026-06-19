@@ -72,21 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Prithvi Pandey — Senior Product Manager" },
-      {
-        name: "description",
-        content:
-          "Portfolio of Prithvi Pandey — Senior PM building commerce, platform, marketplace, growth, and AI-enabled products.",
-      },
-      { name: "author", content: "Prithvi Pandey" },
-      { property: "og:title", content: "Prithvi Pandey — Senior Product Manager" },
-      {
-        property: "og:description",
-        content:
-          "Portfolio of Prithvi Pandey — Senior PM building commerce, platform, marketplace, growth, and AI-enabled products.",
-      },
+      { title: "Prithvi Pandey | Senior Product Manager" },
+      { name: "description", content: "Senior Product Manager with experience across CLM, international expansion, AI commerce, marketplaces, and platform products." },
+      { name: "author", content: "Lovable" },
+      { property: "og:title", content: "Prithvi Pandey | Senior Product Manager" },
+      { property: "og:description", content: "Senior Product Manager with experience across CLM, international expansion, AI commerce, marketplaces, and platform products." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Prithvi Pandey | Senior Product Manager" },
+      { name: "twitter:description", content: "Senior Product Manager with experience across CLM, international expansion, AI commerce, marketplaces, and platform products." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/wnribQJNGjaednceOxwAroGb8WG3/social-images/social-1781896654773-profile_banner.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/wnribQJNGjaednceOxwAroGb8WG3/social-images/social-1781896654773-profile_banner.webp" },
     ],
     links: [
       {
