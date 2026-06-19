@@ -41,15 +41,18 @@ const imageMap: Record<string, string> = {
 export const Route = createFileRoute("/work/$slug")({
   head: ({ params }) => {
     const p = getProject(params.slug);
-    const title = p ? `${p.title} — Prithvi Pandey` : "Project — Prithvi Pandey";
+    const title = p ? `${p.metaTitle ?? p.title} — Prithvi Pandey` : "Project — Prithvi Pandey";
     const description = p?.summary ?? "Product project";
+    const canonical = `https://prithvi-product-folio.lovable.app/work/${params.slug}`;
     return {
       meta: [
         { title },
         { name: "description", content: description },
         { property: "og:title", content: title },
         { property: "og:description", content: description },
+        { property: "og:url", content: canonical },
       ],
+      links: [{ rel: "canonical", href: canonical }],
     };
   },
   loader: ({ params }) => {
