@@ -88,7 +88,7 @@ function Block({ label, children }: { label: string; children: React.ReactNode }
       transition={{ duration: 0.6 }}
       className="grid md:grid-cols-[200px_1fr] gap-6 md:gap-12 py-10 border-t border-border/60"
     >
-      <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{label}</div>
+      <h2 className="text-xs uppercase tracking-[0.18em] text-muted-foreground m-0 font-normal">{label}</h2>
       <div className="text-foreground/90 leading-relaxed text-base md:text-[1.05rem] space-y-4 whitespace-pre-line">
         {children}
       </div>
