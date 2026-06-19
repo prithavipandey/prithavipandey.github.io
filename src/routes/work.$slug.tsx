@@ -66,14 +66,17 @@ export const Route = createFileRoute("/work/$slug")({
       </div>
     </div>
   ),
-  errorComponent: ({ error }) => (
-    <div className="min-h-screen grid place-items-center text-center px-4 dark">
-      <div>
-        <div className="text-sm text-destructive">{error.message}</div>
-        <Link to="/" className="mt-4 inline-flex text-electric">← Back home</Link>
+  errorComponent: ({ error }) => {
+    if (import.meta.env.DEV) console.error(error);
+    return (
+      <div className="min-h-screen grid place-items-center text-center px-4 dark">
+        <div>
+          <div className="text-sm text-destructive">Something went wrong. Please try again.</div>
+          <Link to="/" className="mt-4 inline-flex text-electric">← Back home</Link>
+        </div>
       </div>
-    </div>
-  ),
+    );
+  },
 });
 
 function Block({ label, children }: { label: string; children: React.ReactNode }) {
