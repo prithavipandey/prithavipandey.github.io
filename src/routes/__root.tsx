@@ -82,8 +82,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:site", content: "@Lovable" },
       { name: "twitter:title", content: "Prithvi Pandey | Senior Product Manager" },
       { name: "twitter:description", content: "Senior Product Manager with experience across CLM, international expansion, AI commerce, marketplaces, and platform products." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/wnribQJNGjaednceOxwAroGb8WG3/social-images/social-1781896654773-profile_banner.webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/wnribQJNGjaednceOxwAroGb8WG3/social-images/social-1781896654773-profile_banner.webp" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/wnribQJNGjaednceOxwAroGb8WG3/social-images/social-1781952629531-profile_banner2.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/wnribQJNGjaednceOxwAroGb8WG3/social-images/social-1781952629531-profile_banner2.webp" },
     ],
     links: [
       {
