@@ -181,7 +181,7 @@ function CaseStudy() {
   return (
     <div className="min-h-screen dark relative">
       <SiteNav />
-      <article className="pt-36 pb-24">
+      <article className="pt-24 md:pt-36 pb-24">
         {/* Hero */}
         <header className="relative overflow-hidden">
           <div className="absolute inset-0 -z-10 bg-hero-radial opacity-80" />
