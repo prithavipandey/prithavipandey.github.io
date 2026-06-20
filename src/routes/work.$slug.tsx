@@ -144,7 +144,15 @@ function ExperienceCard({
       transition={{ duration: 0.5 }}
       className="group relative rounded-2xl overflow-hidden bg-card/60 border border-foreground/10 hover:border-electric/30 transition"
     >
-      <div className={`w-full overflow-hidden bg-gradient-to-b from-foreground/[0.04] to-foreground/[0.02] p-3 grid gap-2`} style={{ gridTemplateColumns: `repeat(${images.length}, minmax(0, 1fr))` }}>
+      <div
+        className={`w-full overflow-hidden bg-gradient-to-b from-foreground/[0.04] to-foreground/[0.02] p-3 grid gap-2 ${
+          images.length >= 3
+            ? "grid-cols-1 sm:grid-cols-3"
+            : images.length === 2
+              ? "grid-cols-1 sm:grid-cols-2"
+              : "grid-cols-1"
+        }`}
+      >
         {images.map((src, i) => (
           <div key={src} className={`${aspect} w-full overflow-hidden rounded-lg bg-background/40 grid place-items-center`}>
             <img
@@ -181,7 +189,7 @@ function CaseStudy() {
   return (
     <div className="min-h-screen dark relative">
       <SiteNav />
-      <article className="pt-36 pb-24">
+      <article className="pt-24 md:pt-36 pb-24">
         {/* Hero */}
         <header className="relative overflow-hidden">
           <div className="absolute inset-0 -z-10 bg-hero-radial opacity-80" />

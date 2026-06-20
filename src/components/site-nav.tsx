@@ -41,17 +41,17 @@ export function SiteNav() {
             </span>
             <span className="text-sm font-medium tracking-tight">Prithvi Pandey</span>
           </Link>
-          <div className="hidden md:flex items-center gap-1 text-sm text-muted-foreground">
-            <Link to="/" className="px-3 py-1.5 rounded-full hover:text-foreground transition-colors">
+          <div className="flex items-center gap-0.5 sm:gap-1 text-xs sm:text-sm text-muted-foreground">
+            <Link to="/" className="px-2 sm:px-3 py-1.5 rounded-full hover:text-foreground transition-colors">
               Home
             </Link>
             {links.map((l) =>
               onHome ? (
-                <a key={l.label} href={`#${l.hash}`} className="px-3 py-1.5 rounded-full hover:text-foreground transition-colors">
+                <a key={l.label} href={`#${l.hash}`} className="px-2 sm:px-3 py-1.5 rounded-full hover:text-foreground transition-colors">
                   {l.label}
                 </a>
               ) : (
-                <Link key={l.label} to="/" hash={l.hash} className="px-3 py-1.5 rounded-full hover:text-foreground transition-colors">
+                <Link key={l.label} to="/" hash={l.hash} className="px-2 sm:px-3 py-1.5 rounded-full hover:text-foreground transition-colors">
                   {l.label}
                 </Link>
               )
